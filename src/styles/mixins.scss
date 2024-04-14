@@ -1,0 +1,58 @@
+@import "variables";
+@import "colors";
+
+// paragraphs
+@mixin paragraph-1 {
+  font-size: 1em;
+  font-family: "Regular", sans-serif;
+}
+
+@mixin paragraph-2 {
+  font-size: 0.75em;
+  font-family: "Medium", sans-serif;
+  color: var(--gray-color);
+}
+
+@mixin paragraph-3 {
+  font-size: 0.75em;
+  font-family: "Regular", serif;
+}
+
+// headings
+@mixin heading-5 {
+  font-size: 0.75em;
+  font-family: "Semibold", sans-serif;
+}
+
+@mixin heading-4 {
+  font-size: 0.875em;
+  font-family: "Semibold", sans-serif;
+}
+
+@mixin heading-3 {
+  font-size: 1em;
+  font-family: "Semibold", sans-serif;
+}
+
+@mixin heading-2 {
+  font-size: 1.125em;
+  font-family: "Semibold", sans-serif;
+}
+
+@mixin heading-1 {
+  font-size: 1.5em;
+  font-family: "Semibold", sans-serif;
+}
+
+@mixin no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+@mixin no-margin-heading {
+  margin: 0;
+}

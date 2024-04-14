@@ -1,0 +1,73 @@
+.title, .description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-color);
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+.title {
+    color: #262626;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    text-align: center;
+}
+
+.description {
+    //max-width: 1200px;
+    color: #333;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    text-align: center;
+}
+
+.wrapper {
+    max-width: 1440px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    justify-content: center;
+    font-family: "Montserrat Alternates", sans-serif;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.textContainer {
+    width: 80%;
+    max-width: 1200px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    min-width: 320px;
+    flex-wrap: wrap;
+    margin: 55px;
+    overflow: auto;
+}
+
+.requestsList {
+    max-width: 320px;
+    color: var(--main-color);
+    font-size: 16px;
+    font-weight: 400;
+
+}
+
+.item {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: -20px;
+}

@@ -1,0 +1,14 @@
+.btn_connect {
+  padding: 10px 40px;
+  border-radius: 10px;
+  border: 1px solid #FFF;
+  background: transparent;
+  cursor: pointer;
+  margin-right: 25px;
+  font-family: "Montserrat Alternates", serif;
+
+
+  &:hover {
+    background: var(--white-color);
+  }
+}
