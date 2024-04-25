@@ -2,13 +2,15 @@ import React from 'react';
 import { Section } from "../Section";
 import { Text } from "../Text";
 
-import styles from './styles.module.scss';
 import InnovationIcon from "../../lib/icons/InnovationIcon";
 import PersonalizationIcon from "../../lib/icons/PersonalizationIcon";
 import SupportIcon from "../../lib/icons/SupportIcon";
 import QuallityIcon from "../../lib/icons/QuallityIcon";
 import ResultsIcon from "../../lib/icons/ResultsIcon";
 import ExpertiseIcon from "../../lib/icons/ExpertiseIcon";
+
+import styles from './styles.module.scss';
+
 
 // interface FeatureProps {
 //     title: string;
@@ -53,7 +55,7 @@ const features = [
 
 export const Features = () => {
     return (
-        <>
+        <div className={styles.wrapper}>
             <Section className={styles.title}>
                 <Text as="h2">Шесть причин любить MWS</Text>
             </Section>
@@ -64,7 +66,7 @@ export const Features = () => {
             </Section>
             <Section>
             {features.map((item) => (
-                <div key={item[0].title} className={styles.wrapper}>
+                <div key={item[0].title} className={styles.card_wrapper}>
                     {item.map(feature => (
                         <div key={feature.title} className={styles.list}>
                             {feature.icon}
@@ -81,6 +83,6 @@ export const Features = () => {
                 </div>
             ))}
         </Section>
-        </>
+        </div>
     );
 };

@@ -1,15 +1,16 @@
 import React from "react";
+import { Text } from "@/ui/Text";
 
 import styles from "./styles.module.scss";
 
 export const Navigation = () => {
     return (
         <div className={styles.section}>
-            <div>Услуги</div>
-            <div>Продукты</div>
-            <div>Курсы</div>
-            <div>Блог</div>
-            <div>Поддержка</div>
+            <Text as="h4" className={styles.text}>Услуги</Text>
+            <Text as="h4" className={styles.text}>Продукты</Text>
+            <Text as="h4" className={styles.text}>Курсы</Text>
+            <Text as="h4" className={styles.text}>Блог</Text>
+            <Text as="h4" className={styles.text}>Поддержка</Text>
         </div>
     )
 }

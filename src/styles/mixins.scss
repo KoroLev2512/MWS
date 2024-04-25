@@ -20,28 +20,33 @@
 
 // headings
 @mixin heading-5 {
-  font-size: 0.75em;
-  font-family: "Semibold", sans-serif;
+  font-size: 14px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
 }
 
 @mixin heading-4 {
-  font-size: 0.875em;
-  font-family: "Semibold", sans-serif;
+  font-size: 16px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
 }
 
 @mixin heading-3 {
-  font-size: 1em;
-  font-family: "Semibold", sans-serif;
+  font-size: 18px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
 }
 
 @mixin heading-2 {
-  font-size: 1.125em;
-  font-family: "Semibold", sans-serif;
+  font-size: 42px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
 }
 
 @mixin heading-1 {
-  font-size: 1.5em;
-  font-family: "Semibold", sans-serif;
+  font-size: 48px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
 }
 
 @mixin no-select {

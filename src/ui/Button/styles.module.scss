@@ -1,14 +1,37 @@
 .btn_connect {
   padding: 10px 40px;
   border-radius: 10px;
-  border: 1px solid #FFF;
+  border: 1px solid var(--white-color);
   background: transparent;
   cursor: pointer;
   margin-right: 25px;
   font-family: "Montserrat Alternates", serif;
-
+  color: var(--white-color);
+  --background-color: black;
+  white-space: nowrap;
 
   &:hover {
     background: var(--white-color);
+    color: var(--background-color);
+  }
+}
+
+.btn_filter {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--brand-blue-color);
+  background: transparent;
+  cursor: pointer;
+  font-family: "Montserrat Alternates", serif;
+  color: var(--brand-blue-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--brand-blue-color);
+    color: var(--white-color);
   }
 }

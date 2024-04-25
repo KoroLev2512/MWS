@@ -1,0 +1,22 @@
+.wrapper {
+  background: #262626;
+  min-height: 190px;
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 20px 0 0 0;
+  font-family: "Montserrat Alternates", serif;
+  color: var(--white-color);
+}
+
+.logo {
+  display: flex;
+  justify-content: start;
+  margin-right: 60px;
+}

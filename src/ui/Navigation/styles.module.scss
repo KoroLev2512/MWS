@@ -1,5 +1,14 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+
 .section {
+  color: var(--white-color);
   display: inline-flex;
   align-items: flex-start;
   gap: 45px;
+  cursor: pointer;
+}
+
+.text {
+  color: var(--white-color);
 }

@@ -1,0 +1,84 @@
+@import "../../styles/variables.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+
+.hero {
+  width: 100%;
+  color: var(--white-color);
+  transition: all 200ms;
+}
+
+.bg {
+  background-image: url('wave.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: contain;
+}
+
+.carouselContainer {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.header {
+  margin: 20px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  gap: 100px;
+  align-items: center;
+}
+
+.title {
+  max-width: 570px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline: 120px;
+  color: var(--white-color);
+}
+
+.image {
+  padding-inline-end: 120px;
+  padding-top: 44px;
+  width: 453px;
+  height: 439px;
+}
+
+.controls {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: end;
+  height: 40px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.arrow {
+  cursor: pointer;
+  padding: 10px 14px 10px 15px;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid #FFF;
+  margin: 5px;
+}
+
+@media (max-width: 720px) {
+  .title {
+    font-size: 24px;
+  }
+}
