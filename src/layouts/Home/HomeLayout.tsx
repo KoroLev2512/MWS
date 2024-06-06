@@ -1,4 +1,5 @@
 import React from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { CarouselComponent } from '@/ui/Carousel';
 import { Features } from '@/ui/Feature';
 import { Video } from "@/ui/Video/Video";
@@ -128,6 +129,7 @@ export const HomeLayout: React.FC = () => {
             <Examples slides={example_slides} />
             <Promotion/>
             <Footer/>
+            <SpeedInsights />
         </>
     );
 }
