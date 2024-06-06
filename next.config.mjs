@@ -1,5 +1,3 @@
-import path from 'path';
-
 /**
  * @type {import('next').NextConfig}
  */
@@ -22,9 +20,6 @@ const nextConfig = {
     },
     publicRuntimeConfig: {
         host: process.env.NEXT_PUBLIC_PUBLIC_HOST,
-    },
-    experimental: {
-        optimizeFonts: true,
     },
 }
 
