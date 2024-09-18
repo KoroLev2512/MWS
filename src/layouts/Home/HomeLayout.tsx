@@ -1,11 +1,11 @@
 import React from 'react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { CarouselComponent } from '@/ui/Carousel';
-import { Features } from '@/ui/Feature';
-import { Video } from "@/ui/Video/Video";
-import { Examples } from "@/ui/Examples";
-import { Promotion } from "@/ui/Promotion";
-import { Footer } from "@/ui/Footer";
+import {SpeedInsights} from '@vercel/speed-insights/next';
+import {CarouselComponent} from '@/ui/Carousel';
+import {Features} from '@/ui/Feature';
+import {Video} from "@/ui/Video/Video";
+import {Examples} from "@/ui/Examples";
+import {Promotion} from "@/ui/Promotion";
+import {Footer} from "@/ui/Footer";
 
 export const HomeLayout: React.FC = () => {
     const carousel_slides = [
@@ -123,13 +123,13 @@ export const HomeLayout: React.FC = () => {
 
     return (
         <>
-            <CarouselComponent slides={carousel_slides} />
+            <CarouselComponent slides={carousel_slides}/>
             <Features/>
             <Video/>
-            <Examples slides={example_slides} />
+            <Examples slides={example_slides}/>
             <Promotion/>
             <Footer/>
-            <SpeedInsights />
+            <SpeedInsights/>
         </>
     );
 }
