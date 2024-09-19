@@ -52,7 +52,7 @@ This project uses MontserratAlternates local fonts.
 
 ## Status
 
-At the moment the project is in the process of refactoring from Ajax to React.js.
+At the moment, the project is under development. We are testing the MVP version.
 
 ## Contacts
 
@@ -60,7 +60,7 @@ To contact about the project, you can write to [me](https://t.me/korolev_2512).
 
 ## Gratitude
 
-We are grateful to the React and Next teams for the React.js and Next.js frameworks.
+We are grateful to the React and Next teams for the React and Next.js frameworks.
 
 ## Learn More
 
