@@ -3,7 +3,8 @@
 @import "../../styles/mixins.scss";
 
 .hero {
-  //width: 100%;
+  overflow-x: hidden;
+  width: 100%;
   color: var(--white-color);
   transition: all 200ms;
 }
@@ -16,7 +17,7 @@
 }
 
 .carouselContainer {
-    max-width: 1440px;
+    max-width: 100%;
     margin: 0 auto;
 }
 

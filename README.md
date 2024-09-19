@@ -1,3 +1,5 @@
+![Image alt](https://github.com/KoroLev2512/MWS/blob/main/public/icons/logo_full.svg)
+
 # MWS: your solution in the digital world
 
 Look at the [NextJS documentation](https://nextjs.org/docs) and [React documentation](https://nextjs.org/docs) to learn more info about stack.
