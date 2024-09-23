@@ -3,6 +3,7 @@
 }
 
 .wrapper {
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     padding-top: 130px;
@@ -22,9 +23,7 @@
     gap: 5px;
 
     .filter {
-
         &.activeFilter {
-
         }
     }
 }
