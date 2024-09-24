@@ -47,11 +47,9 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ slides }) => {
                     >
                         {slides.map((slide, index) => (
                             <SwiperSlide key={index} className={styles.content}>
-                                <div>
-                                    <Text as="h1" className={styles.title}>
-                                        {slide.text}
-                                    </Text>
-                                </div>
+                                <Text as="h1" className={styles.title}>
+                                    {slide.text}
+                                </Text>
                                 <div className={styles.image}>
                                     <img
                                         src={slide.image}
