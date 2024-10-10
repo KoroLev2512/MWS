@@ -8,7 +8,7 @@ interface Props {
 
 const Burger: React.FC<Props> = ({ menuPageIsOpen }) => {
     return (
-        <div className={classNames(styles.nav, {[styles.openNav]: menuPageIsOpen})}>
+        <div>
             <div className={styles.burgerBtn}>
                 <span/>
             </div>

@@ -39,7 +39,6 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ slides }) => {
                         loop={true}
                         autoplay={{delay: 5000, disableOnInteraction: false}}
                         pagination={{clickable: true}}
-                        spaceBetween={50}
                         slidesPerView={1}
                         className={styles.carouselContainer}
                         onSlideChange={handleSlideChange}
@@ -50,12 +49,11 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ slides }) => {
                                 <Text as="h1" className={styles.title}>
                                     {slide.text}
                                 </Text>
-                                <div className={styles.image}>
-                                    <img
-                                        src={slide.image}
-                                        alt={`Slide ${index}`}
-                                    />
-                                </div>
+                                <img
+                                    className={styles.image}
+                                    src={slide.image}
+                                    alt={`Slide ${index}`}
+                                />
                             </SwiperSlide>
                         ))}
                     </Swiper>

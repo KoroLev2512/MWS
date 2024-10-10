@@ -20,3 +20,17 @@
   justify-content: start;
   margin-right: 60px;
 }
+
+.burger {
+  display: none;
+}
+
+@media(max-width: 1400px) {
+  .header {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
