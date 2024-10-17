@@ -1,5 +1,4 @@
 import React from 'react';
-import {Section} from "@/ui/Section";
 import {Text} from "@/ui/Text";
 
 import styles from "./styles.module.scss";
@@ -15,7 +14,7 @@ export const Promotion = () => {
                         alt='promo'
                     />
                     <div className={styles.about}>
-                        <Text as="h2" className={styles.title}>
+                        <Text as="h1" className={styles.title}>
                             Продвигаем малый, средний и крупный бизнес
                         </Text>
                         <Text as="h4" className={styles.description}>

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, {useState} from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Text } from "@/ui/Text";
-import { ExampleSlide } from "@/ui/types";
-import { FilterButton } from "@/ui/Button/FilterButton";
+import {Text} from "@/ui/Text";
+import {ExampleSlide} from "@/ui/types";
+import {FilterButton} from "@/ui/Button/FilterButton";
 
 import styles from "./styles.module.scss";
 
@@ -13,7 +13,7 @@ interface CategorySelectorProps {
     slides: ExampleSlide[];
 }
 
-export const Examples: React.FC<CategorySelectorProps> = ({ slides }) => {
+export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
 
     const [activeIndex, setActiveIndex] = useState(0);
 

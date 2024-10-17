@@ -93,12 +93,12 @@
 
   .title {
     font-size: 40px;
-    padding: 0  0 0 20px;
+    padding: 0  0 0 40px;
     margin-left: auto
   }
 
   .image {
-    padding: 0 20px 0 0;
+    padding: 0 40px 0 0;
     margin-right: auto;
   }
 }
@@ -120,15 +120,19 @@
 
 @media (max-width: 900px) {
   .title {
-    font-size: 32px;
+    font-size: 30px;
     padding-inline: 60px;
+  }
+
+  .image {
+    max-height: 300px;
   }
 }
 
 @media (max-width: 720px) {
   .title {
     font-size: 24px;
-    margin: 20px;
+    margin: 0 40px 20px 40px;
     padding-inline: 0;
   }
 

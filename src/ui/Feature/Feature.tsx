@@ -1,6 +1,6 @@
 import React from 'react';
-import { Section } from "../Section";
-import { Text } from "../Text";
+import {Section} from "../Section";
+import {Text} from "../Text";
 
 import InnovationIcon from "../../lib/icons/InnovationIcon";
 import PersonalizationIcon from "../../lib/icons/PersonalizationIcon";
@@ -56,15 +56,17 @@ const features = [
 export const Features = () => {
     return (
         <div className={styles.wrapper}>
-            <Section className={styles.title}>
+            <div className={styles.title}>
                 <Text as="h2">Шесть причин любить MWS</Text>
-            </Section>
-            <Section className={styles.description}>
-                <div className={styles.textContainer}>
-                    <Text as="h3">Сотни клиентов со всего мира выбирают нас для решения своих задач в цифровом пространстве. Множество компаний и индивидуальных предпринимателей вывели свой бизнес на новый уровень благодаря сайтам и приложениям, разработанным в MWS, а также маркетинговым стратегиям и SMM решениям.</Text>
+            </div>
+            <div className={styles.position}>
+                <div className={styles.description}>
+                    <Text as="h3">Сотни клиентов со всего мира выбирают нас для решения своих задач в цифровом
+                        пространстве. Множество компаний и индивидуальных предпринимателей вывели свой бизнес на новый
+                        уровень благодаря сайтам и приложениям, разработанным в MWS, а также маркетинговым стратегиям и
+                        SMM решениям.</Text>
                 </div>
-            </Section>
-            <Section>
+            </div>
             {features.map((item) => (
                 <div key={item[0].title} className={styles.card_wrapper}>
                     {item.map(feature => (
@@ -75,14 +77,15 @@ export const Features = () => {
                                     {feature.title}
                                 </Text>
                             </Section>
-                            <Text className={styles.requestsList}>
-                                {feature.description}
-                            </Text>
+                            <div className={styles.position}>
+                                <Text className={styles.requestsList}>
+                                    {feature.description}
+                                </Text>
+                            </div>
                         </div>
                     ))}
                 </div>
             ))}
-        </Section>
         </div>
     );
 };

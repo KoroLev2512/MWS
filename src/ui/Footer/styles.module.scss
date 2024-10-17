@@ -20,3 +20,9 @@
   justify-content: start;
   margin-right: 60px;
 }
+
+@media (max-width: 720px) {
+  .wrapper {
+    padding-left: 20px;
+  }
+}

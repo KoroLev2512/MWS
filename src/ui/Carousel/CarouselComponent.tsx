@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, {useState} from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Header } from '@/ui/Header';
-import { Text } from "@/ui/Text";
-import { CarouselSlide } from "@/ui/types";
+import {Header} from '@/ui/Header';
+import {Text} from "@/ui/Text";
+import {CarouselSlide} from "@/ui/types";
 
 import styles from './styles.module.scss';
 
@@ -13,8 +13,8 @@ interface CarouselProps {
     slides: CarouselSlide[];
 }
 
-export const CarouselComponent: React.FC<CarouselProps> = ({ slides }) => {
-    const [ , setActiveSlideIndex] = useState(0);
+export const CarouselComponent: React.FC<CarouselProps> = ({slides}) => {
+    const [, setActiveSlideIndex] = useState(0);
     const [backgroundStyle, setBackgroundStyle] = useState(slides[0].backgroundColor);
 
     const handleSlideChange = (swiper) => {
@@ -27,7 +27,7 @@ export const CarouselComponent: React.FC<CarouselProps> = ({ slides }) => {
     };
 
     return (
-        <div className={styles.hero} style={{ background: backgroundStyle }}>
+        <div className={styles.hero} style={{background: backgroundStyle}}>
             <div className={styles.bg}>
                 <Header/>
                 <div>

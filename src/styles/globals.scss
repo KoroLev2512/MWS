@@ -137,8 +137,6 @@ h1 {
 h2 {
   @include heading-2;
   color: var(--main-color);
-  margin-top: 130px;
-  margin-bottom: 20px;
 }
 
 h3 {
@@ -215,4 +213,25 @@ input:disabled {
 
 a {
   text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 720px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 400;
+  }
 }

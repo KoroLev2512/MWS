@@ -59,6 +59,31 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 720px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 20px;
+  }
 
+  .wrapper {
+    border-radius: 0;
+    margin: 0;
+    max-height: 1600px;
+  };
+
+  .video {
+    width: 100%;
+    min-height: 200px;
+    max-width: 700px;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .video {
+    min-height: 160px;
+  }
 }

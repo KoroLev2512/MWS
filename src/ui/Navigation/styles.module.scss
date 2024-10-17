@@ -12,3 +12,9 @@
 .text {
   color: var(--white-color);
 }
+
+@media (max-width: 720px) {
+  .section {
+    display: none;
+  }
+}
