@@ -35,9 +35,8 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  padding-bottom: 70px;
   max-width: 1200px;
-  width: 100dvw;
+  width: 84dvw;
 }
 
 .card_wrapper {
@@ -53,8 +52,7 @@
   &:last-child {
     margin-bottom: 0;
   }
-
-  padding: 40px 0;
+  padding: 30px 0;
 }
 
 .list {
@@ -64,7 +62,7 @@
   text-align: center;
   min-width: 320px;
   flex-wrap: wrap;
-  margin: 55px;
+  margin: 45px;
   overflow: auto;
 }
 
