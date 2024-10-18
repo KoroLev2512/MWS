@@ -1,6 +1,9 @@
 .wrapper {
   background: #F9F9F9;
   padding: 20px 20px 100px 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .title, .description {
@@ -46,7 +49,6 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0;
   grid-row-gap: 0;
-  justify-content: center;
   font-family: "Montserrat Alternates", sans-serif;
 
   &:last-child {
