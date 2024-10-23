@@ -1,16 +1,16 @@
 .bg {
     background-color: #F9F9F9;
+    padding: 20px;
 }
 
 .wrapper {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    padding-top: 130px;
+    padding: 130px 0 110px;
     margin: 0 auto;
     width: 100%;
     max-width: 1200px;
-    padding-bottom: 110px;
 }
 
 .filterContainer {
@@ -18,6 +18,7 @@
     flex-direction: row;
     justify-content: start;
     flex-wrap: wrap;
+    width: 90dvw;
     max-width: 1200px;
     margin: 20px 0 20px 0;
     gap: 5px;
@@ -29,11 +30,14 @@
 }
 
 .image {
+    width: 90dvw;
     margin: 40px 0 40px 0;
+    max-width: 1200px;
 }
 
 .controls {
     max-width: 1300px;
+    width: 90dvw;
     display: flex;
     align-items: start;
     justify-content: space-between;
@@ -60,6 +64,35 @@
     line-height: normal;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1200px) {
+    .image {
+        margin: 10px 0;
+    }
+}
 
+@media (max-width: 780px) {
+    .controls {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .arrowContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-left: auto;
+        margin-top: 10px;
+    }
+
+    .description {
+        font-size: 16px;
+        max-width: 60dvw;
+    }
+}
+
+@media (max-width: 780px) {
+    .description {
+        font-size: 14px;
+        max-width: 60dvw;
+    }
 }

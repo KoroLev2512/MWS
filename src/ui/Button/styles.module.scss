@@ -35,3 +35,10 @@
     color: var(--white-color);
   }
 }
+
+@media (max-width: 720px) {
+  .btn_filter {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}

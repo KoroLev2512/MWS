@@ -56,8 +56,10 @@ const features = [
 export const Features = () => {
     return (
         <div className={styles.wrapper}>
-            <div className={styles.title}>
-                <Text as="h2">Шесть причин любить MWS</Text>
+            <div className={styles.position}>
+                <div className={styles.title}>
+                    <Text as="h2">Шесть причин любить MWS</Text>
+                </div>
             </div>
             <div className={styles.position}>
                 <div className={styles.description}>

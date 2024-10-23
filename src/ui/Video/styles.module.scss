@@ -50,6 +50,7 @@
   }
 
   .video {
+    min-width: 300px;
     max-width: 340px;
     flex: 1;
   }
@@ -76,9 +77,13 @@
   .video {
     width: 100%;
     min-height: 200px;
-    max-width: 700px;
+    max-width: 500px;
     padding: 0;
     margin: 0;
+  }
+
+  .text {
+    max-width: 500px;
   }
 }
 

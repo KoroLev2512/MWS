@@ -19,13 +19,15 @@
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin: 110px 0 20px 0;
   color: #262626;
   font-size: 42px;
-  font-style: normal;
-  font-weight: normal;
-  line-height: normal;
-  text-align: center;
+  width: 84dvw;
+
 }
 
 .description {
@@ -83,6 +85,10 @@
 }
 
 @media (max-width: 1200px) {
+  .title {
+    text-align: left;
+  }
+
   .card_wrapper {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -93,7 +99,7 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 770px) {
   .wrapper {
     padding: 20px 20px 60px 20px;
   }
