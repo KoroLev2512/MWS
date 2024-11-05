@@ -2,12 +2,12 @@ import React from 'react';
 import {Section} from "../Section";
 import {Text} from "../Text";
 
-import InnovationIcon from "../../lib/icons/InnovationIcon";
-import PersonalizationIcon from "../../lib/icons/PersonalizationIcon";
-import SupportIcon from "../../lib/icons/SupportIcon";
-import QuallityIcon from "../../lib/icons/QuallityIcon";
-import ResultsIcon from "../../lib/icons/ResultsIcon";
-import ExpertiseIcon from "../../lib/icons/ExpertiseIcon";
+import InnovationIcon from "@/shared/lib/icons/InnovationIcon";
+import PersonalizationIcon from "@/shared/lib/icons/PersonalizationIcon";
+import SupportIcon from "@/shared/lib/icons/SupportIcon";
+import QuallityIcon from "@/shared/lib/icons/QuallityIcon";
+import ResultsIcon from "@/shared/lib/icons/ResultsIcon";
+import ExpertiseIcon from "@/shared/lib/icons/ExpertiseIcon";
 
 import styles from './styles.module.scss';
 

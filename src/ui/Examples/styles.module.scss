@@ -16,7 +16,7 @@
 .filterContainer {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     flex-wrap: wrap;
     width: 90dvw;
     max-width: 1200px;
@@ -39,7 +39,7 @@
     max-width: 1300px;
     width: 90dvw;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     height: 40px;
     text-align: center;

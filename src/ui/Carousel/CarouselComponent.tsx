@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
+import {Swiper as SwiperType} from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -16,14 +17,27 @@ interface CarouselProps {
 export const CarouselComponent: React.FC<CarouselProps> = ({slides}) => {
     const [, setActiveSlideIndex] = useState(0);
     const [backgroundStyle, setBackgroundStyle] = useState(slides[0].backgroundColor);
+    const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
-    const handleSlideChange = (swiper) => {
+    const handleSlideChange = (swiper: SwiperType) => {
         const realIndex = swiper.realIndex;
-        setActiveSlideIndex(swiper.realIndex);
+        setActiveSlideIndex(realIndex);
 
         setTimeout(() => {
             setBackgroundStyle(slides[realIndex].backgroundColor);
         }, 0);
+    };
+
+    const handleNextSlide = () => {
+        if (swiperInstance) {
+            swiperInstance.slideNext();
+        }
+    };
+
+    const handlePreviousSlide = () => {
+        if (swiperInstance) {
+            swiperInstance.slidePrev();
+        }
     };
 
     return (
@@ -33,8 +47,8 @@ export const CarouselComponent: React.FC<CarouselProps> = ({slides}) => {
                 <div>
                     <Swiper
                         navigation={{
-                            nextEl: '.styles.arrow:nth-child(1)',
-                            prevEl: '.styles.arrow:nth-child(2)',
+                            nextEl: `.${styles.arrow}:nth-child(2)`,
+                            prevEl: `.${styles.arrow}:nth-child(1)`,
                         }}
                         loop={true}
                         autoplay={{delay: 5000, disableOnInteraction: false}}
@@ -42,6 +56,7 @@ export const CarouselComponent: React.FC<CarouselProps> = ({slides}) => {
                         slidesPerView={1}
                         className={styles.carouselContainer}
                         onSlideChange={handleSlideChange}
+                        onSwiper={setSwiperInstance}
                         speed={500}
                     >
                         {slides.map((slide, index) => (
@@ -60,6 +75,7 @@ export const CarouselComponent: React.FC<CarouselProps> = ({slides}) => {
                 </div>
                 <div className={styles.controls}>
                     <img
+                        onClick={handlePreviousSlide}
                         className={styles.arrow}
                         src='/icons/slick-left-icon.svg'
                         alt={'<'}
@@ -67,7 +83,7 @@ export const CarouselComponent: React.FC<CarouselProps> = ({slides}) => {
                         height={14}
                     />
                     <img
-                        className={styles.arrow}
+                        onClick={handleNextSlide}                        className={styles.arrow}
                         src='/icons/slick-right-icon.svg'
                         alt={'>'}
                         width={7}

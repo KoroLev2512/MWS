@@ -1,6 +1,6 @@
 import React from "react";
-import { GRAY_COLOR } from "@/lib/const/colors";
-import { getSvgOptions } from "@/lib/utils/iconHelper";
+import { GRAY_COLOR } from "@/shared/lib/const/colors";
+import { getSvgOptions } from "@/shared/lib/utils/iconHelper";
 import { IconProps } from "./types";
 
 const ArrowIcon = (

@@ -51,7 +51,7 @@ export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
                         <SwiperSlide key={index}>
                             <div>
                                 <img
-                                    src={slide.imageSrc}
+                                    src={slide.image}
                                     className={styles.image}
                                     alt={`Slide ${index}`}
                                 />

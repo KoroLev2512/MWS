@@ -4,22 +4,22 @@
 
 @font-face {
   font-family: "Regular";
-  src: url("../../public/fonts/MontserratAlternates-Regular.ttf");
+  src: url("../../../public/fonts/MontserratAlternates-Regular.ttf");
 }
 
 @font-face {
   font-family: "Medium";
-  src: url("../../public/fonts/MontserratAlternates-Medium.ttf");
+  src: url("../../../public/fonts/MontserratAlternates-Medium.ttf");
 }
 
 @font-face {
   font-family: "Semibold";
-  src: url("../../public/fonts/MontserratAlternates-SemiBold.ttf");
+  src: url("../../../public/fonts/MontserratAlternates-SemiBold.ttf");
 }
 
 @font-face {
   font-family: "Bold";
-  src: url("../../public/fonts/MontserratAlternates-Bold.ttf");
+  src: url("../../../public/fonts/MontserratAlternates-Bold.ttf");
 }
 
 .montserrat-alternates-regular {
@@ -52,6 +52,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  width: 100dvw;
   background-color: var(--secondary-background-color);
   font-size: 16px;
   font-weight: 400;
@@ -170,11 +171,11 @@ input:disabled {
   }
 
   .slick-prev:before {
-    content: url("../../public/icons/slick-left-icon.svg");
+    content: url("../../../public/icons/slick-left-icon.svg");
   }
 
   .slick-next:before {
-    content: url("../../public/icons/slick-right-icon.svg");
+    content: url("../../../public/icons/slick-right-icon.svg");
   }
 
   .slick-slide {

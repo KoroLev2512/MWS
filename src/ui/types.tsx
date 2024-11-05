@@ -12,6 +12,6 @@ export interface ExampleSlide {
     title: string;
     description: string,
     imageTitle: string;
-    imageSrc: string;
-    backgroundSrc: string;
+    image: string;
+    background: string;
 }

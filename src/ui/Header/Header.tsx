@@ -3,7 +3,7 @@ import { MyButton } from "../Button/MyButton";
 import { Navigation } from "../Navigation";
 import { LanguageSelector } from "@/ui/LanguageSelector";
 import Burger from "@/ui/Burger/Burger";
-import {useAppStore} from "@/lib/store/appStore";
+import {useAppStore} from "@/shared/lib/store/appStore";
 
 import styles from './styles.module.scss';
 import classNames from 'classnames';

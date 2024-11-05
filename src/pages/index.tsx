@@ -1,5 +1,5 @@
 import React from "react";
-import {HomeLayout} from "@/layouts/Home/HomeLayout";
+import Home from "@/pages/Home/Home";
 import {IntlProvider} from 'next-intl'
 import {useRouter} from "next/router";
 
@@ -10,7 +10,7 @@ const App = () =>{
 
     return (
         <IntlProvider locale={locale}>
-            <HomeLayout/>
+            <Home/>
         </IntlProvider>
     )
 }

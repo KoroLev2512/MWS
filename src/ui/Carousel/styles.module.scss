@@ -1,6 +1,6 @@
-@import "../../styles/variables.scss";
-@import "../../styles/colors.scss";
-@import "../../styles/mixins.scss";
+@import "../../app/styles/variables.scss";
+@import "../../app/styles/colors.scss";
+@import "../../app/styles/mixins.scss";
 
 .hero {
   overflow-x: hidden;
@@ -70,7 +70,7 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   height: 40px;
   padding: 40px 0;
   text-align: center;
