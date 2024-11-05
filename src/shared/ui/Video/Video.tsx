@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from "@/ui/Text";
+import {Text} from "../Text";
 import VideoPlayIcon from "@/shared/lib/icons/VideoPlayIcon";
 
 import styles from './styles.module.scss';

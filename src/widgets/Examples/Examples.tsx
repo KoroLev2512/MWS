@@ -3,9 +3,9 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import {Text} from "@/ui/Text";
-import {ExampleSlide} from "@/ui/types";
-import {FilterButton} from "@/ui/Button/FilterButton";
+import {Text} from "@/shared/ui/Text";
+import {ExampleSlide} from "@/widgets/types";
+import {FilterButton} from "@/shared/ui/Button/FilterButton";
 
 import styles from "./styles.module.scss";
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import {SpeedInsights} from '@vercel/speed-insights/next';
-import {CarouselComponent} from '@/ui/Carousel';
-import {Features} from '@/ui/Feature';
-import {Video} from "@/ui/Video/Video";
-import {Examples} from "@/ui/Examples";
-import {Promotion} from "@/ui/Promotion";
-import {Footer} from "@/ui/Footer";
+import {CarouselComponent} from '@/widgets/Carousel';
+import {Features} from '@/shared/ui/Feature';
+import {Video} from "@/shared/ui/Video/Video";
+import {Examples} from "@/widgets/Examples";
+import {Promotion} from "@/shared/ui/Promotion";
+import {Footer} from "@/widgets/Footer";
 import {carousel_slides, example_slides} from '@/shared/lib/store/slides';
 
 

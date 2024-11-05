@@ -1,5 +1,4 @@
 import React from 'react';
-import {Section} from "../Section";
 import {Text} from "../Text";
 
 import InnovationIcon from "@/shared/lib/icons/InnovationIcon";
@@ -74,11 +73,9 @@ export const Features = () => {
                     {item.map(feature => (
                         <div key={feature.title} className={styles.list}>
                             {feature.icon}
-                            <Section>
                                 <Text as="h3" className={styles.item}>
                                     {feature.title}
                                 </Text>
-                            </Section>
                             <div className={styles.position}>
                                 <Text className={styles.requestsList}>
                                     {feature.description}

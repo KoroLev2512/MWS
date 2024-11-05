@@ -1,8 +1,8 @@
 import React from 'react';
-import { MyButton } from "../Button/MyButton";
-import { Navigation } from "../Navigation";
-import { LanguageSelector } from "@/ui/LanguageSelector";
-import Burger from "@/ui/Burger/Burger";
+import { MyButton } from "@/shared/ui/Button/MyButton";
+import { Navigation } from "@/shared/ui/Navigation";
+import { LanguageSelector } from "@/shared/ui/LanguageSelector";
+import Burger from "@/shared/ui/Burger/Burger";
 import {useAppStore} from "@/shared/lib/store/appStore";
 
 import styles from './styles.module.scss';

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Navigation} from "@/ui/Navigation";
-import {LanguageSelector} from "@/ui/LanguageSelector";
+import {Navigation} from "@/shared/ui/Navigation";
+import {LanguageSelector} from "@/shared/ui/LanguageSelector";
 
 import styles from "./styles.module.scss";
 

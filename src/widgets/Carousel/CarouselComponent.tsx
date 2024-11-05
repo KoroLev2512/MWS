@@ -4,9 +4,9 @@ import {Swiper as SwiperType} from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import {Header} from '@/ui/Header';
-import {Text} from "@/ui/Text";
-import {CarouselSlide} from "@/ui/types";
+import {Header} from '../Header';
+import {Text} from "@/shared/ui/Text";
+import {CarouselSlide} from "@/widgets/types";
 
 import styles from './styles.module.scss';
 
