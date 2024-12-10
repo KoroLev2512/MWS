@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+
 import styles from './styles.module.scss';
 
 export const LanguageToggle = () => {
@@ -18,7 +19,7 @@ export const LanguageToggle = () => {
     }, [language, i18n]);
 
     const toggle = () => {
-        const newLanguage = language === 'en' ? 'ru' : 'en';
+        const newLanguage = language === 'ru' ? 'en' : 'ru';
         setLanguage(newLanguage);
     };
 
