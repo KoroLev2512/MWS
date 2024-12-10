@@ -1,13 +1,13 @@
 import React from 'react';
-import { MyButton } from "@/shared/ui/Button/MyButton";
-import { Navigation } from "@/shared/ui/Navigation";
-import { LanguageSelector } from "@/shared/ui/LanguageSelector";
+import {MyButton} from "@/shared/ui/Button/MyButton";
+import {Navigation} from "@/shared/ui/Navigation";
 import Burger from "@/shared/ui/Burger/Burger";
 import {useAppStore} from "@/shared/lib/store/appStore";
+import Link from "next/link";
+import {LanguageToggle} from "@/shared/ui/LanguageToggle";
+import {useTranslation} from "react-i18next";
 
 import styles from './styles.module.scss';
-import classNames from 'classnames';
-
 
 const NavigationBarToggle = (): JSX.Element => {
     const [toggleMenuPage, menuPageIsOpen] = useAppStore(state => [state.toggleMenuPage, state.menuPageIsOpen]);
@@ -18,31 +18,34 @@ const NavigationBarToggle = (): JSX.Element => {
 
     return (
         <div>
-            <Burger menuPageIsOpen={menuPageIsOpen} />
+            <Burger menuPageIsOpen={menuPageIsOpen}/>
         </div>
     );
 };
 
 export const Header = () => {
+    const {t} = useTranslation();
     return (
         <>
             <div className={styles.header}>
                 <div className={styles.logo}>
-                    <img
-                        src='/icons/logo.svg'
-                        alt="logo"
-                    />
+                    <Link href="/">
+                        <img
+                            src='/icons/logo.svg'
+                            alt="logo"
+                        />
+                    </Link>
                 </div>
                 <Navigation/>
                 <div className={styles.button}>
                     <MyButton>
-                        Связаться
+                        {t('Contact')}
                     </MyButton>
                     <MyButton>
-                        Поддержка
+                        {t('More')}
                     </MyButton>
                 </div>
-                <LanguageSelector/>
+                <LanguageToggle/>
             </div>
             {/*<div>*/}
             {/*   <NavigationBarToggle/>*/}

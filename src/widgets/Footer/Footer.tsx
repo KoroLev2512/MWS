@@ -1,9 +1,9 @@
 import React from 'react';
 import {Navigation} from "@/shared/ui/Navigation";
-import {LanguageSelector} from "@/shared/ui/LanguageSelector";
+import {LanguageToggle} from "@/shared/ui/LanguageToggle";
+
 
 import styles from "./styles.module.scss";
-
 
 export const Footer = () => {
     return (
@@ -16,7 +16,7 @@ export const Footer = () => {
                     />
                 </div>
                 <Navigation/>
-                <LanguageSelector/>
+                <LanguageToggle/>
             </div>
         </div>
     );

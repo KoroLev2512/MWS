@@ -9,7 +9,7 @@ import ResultsIcon from "@/shared/lib/icons/ResultsIcon";
 import ExpertiseIcon from "@/shared/lib/icons/ExpertiseIcon";
 
 import styles from './styles.module.scss';
-
+import {useTranslation} from "react-i18next";
 
 // interface FeatureProps {
 //     title: string;
@@ -53,11 +53,12 @@ const features = [
 ]
 
 export const Features = () => {
+    const {t} = useTranslation();
     return (
         <div className={styles.wrapper}>
             <div className={styles.position}>
                 <div className={styles.title}>
-                    <Text as="h2">Шесть причин любить MWS</Text>
+                    <Text as="h2">{t('Six reasons to love MWS')}</Text>
                 </div>
             </div>
             <div className={styles.position}>

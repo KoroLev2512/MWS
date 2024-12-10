@@ -14,7 +14,7 @@ interface CarouselProps {
     slides: CarouselSlide[];
 }
 
-export const CarouselComponent: React.FC<CarouselProps> = ({slides}) => {
+export const Carousel: React.FC<CarouselProps> = ({slides}) => {
     const [, setActiveSlideIndex] = useState(0);
     const [backgroundStyle, setBackgroundStyle] = useState(slides[0].backgroundColor);
     const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
@@ -83,7 +83,8 @@ export const CarouselComponent: React.FC<CarouselProps> = ({slides}) => {
                         height={14}
                     />
                     <img
-                        onClick={handleNextSlide}                        className={styles.arrow}
+                        onClick={handleNextSlide}
+                        className={styles.arrow}
                         src='/icons/slick-right-icon.svg'
                         alt={'>'}
                         width={7}
