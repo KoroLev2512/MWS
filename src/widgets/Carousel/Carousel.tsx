@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import {Header} from '../Header';
 import {Text} from "@/shared/ui/Text";
 import {CarouselSlide} from "@/widgets/types";
+import {useTranslation} from "react-i18next";
 
 import styles from './styles.module.scss';
 
@@ -15,6 +16,7 @@ interface CarouselProps {
 }
 
 export const Carousel: React.FC<CarouselProps> = ({slides}) => {
+    const {t} = useTranslation();
     const [, setActiveSlideIndex] = useState(0);
     const [backgroundStyle, setBackgroundStyle] = useState(slides[0].backgroundColor);
     const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
@@ -62,7 +64,7 @@ export const Carousel: React.FC<CarouselProps> = ({slides}) => {
                         {slides.map((slide, index) => (
                             <SwiperSlide key={index} className={styles.content}>
                                 <Text as="h1" className={styles.title}>
-                                    {slide.text}
+                                    {t(slide.textKey)}
                                 </Text>
                                 <img
                                     className={styles.image}

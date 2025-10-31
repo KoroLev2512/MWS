@@ -9,7 +9,7 @@ import {useTranslation} from "react-i18next";
 
 import styles from './styles.module.scss';
 
-const NavigationBarToggle = (): JSX.Element => {
+const NavigationBarToggle = (): React.ReactElement => {
     const [toggleMenuPage, menuPageIsOpen] = useAppStore(state => [state.toggleMenuPage, state.menuPageIsOpen]);
 
     const handleClick = () => {

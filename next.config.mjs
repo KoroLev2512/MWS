@@ -6,22 +6,29 @@ const nextConfig = {
     trailingSlash: true,
     output: "standalone",
     reactStrictMode: false,
-    swcMinify: false,
     images: {
         unoptimized: true,
-        domains: ["localhost", "http.cat"],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'localhost',
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+            },
+            {
+                protocol: 'https',
+                hostname: 'http.cat',
+            },
+        ],
     },
     env: {
         NEXT_PUBLIC_INTERNAL_HOST: process.env.NEXT_PUBLIC_INTERNAL_HOST,
         NEXT_PUBLIC_PUBLIC_HOST: process.env.NEXT_PUBLIC_PUBLIC_HOST,
     },
-    serverRuntimeConfig: {
-        host: process.env.NEXT_PUBLIC_INTERNAL_HOST,
-    },
-    publicRuntimeConfig: {
-        host: process.env.NEXT_PUBLIC_PUBLIC_HOST,
-    },
-
+    
+    // Use webpack explicitly for now (can migrate to Turbopack later)
     webpack: (config, {isServer, webpack}) => {
         if (!isServer) {
             config.output.publicPath = '/_next/';
@@ -45,6 +52,9 @@ const nextConfig = {
 
         return config;
     },
+    
+    // Turbopack config placeholder
+    turbopack: {},
 };
 
 export default nextConfig;

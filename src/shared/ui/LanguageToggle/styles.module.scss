@@ -6,4 +6,15 @@
   border: none;
   background: none;
   outline: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  
+  &:hover {
+    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.80);
+  }
+  
+  &:active {
+    opacity: 0.6;
+  }
 }

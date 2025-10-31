@@ -15,7 +15,7 @@ export const Text = <C extends React.ElementType>({
     const Component = as || "p";
 
     return (
-        <Component className={classNames(styles.text, className)}>
+        <Component className={classNames(styles.text, className)} suppressHydrationWarning>
             {children}
         </Component>
     );

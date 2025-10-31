@@ -12,6 +12,7 @@ export const MyButton: React.FC<ButtonProps> = ({
     return (
         <button
             className={styles.btn_connect}
+            suppressHydrationWarning
             {...restProps}
         >
             {children}

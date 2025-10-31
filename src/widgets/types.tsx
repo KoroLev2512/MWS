@@ -1,17 +1,16 @@
 export type LayoutType = {
-    children?: JSX.Element;
+    children?: React.ReactElement;
 };
 
 export interface CarouselSlide {
-    text: string;
+    textKey: string;
     image: string;
     backgroundColor: string;
 }
 
 export interface ExampleSlide {
-    title: string;
-    description: string,
-    imageTitle: string;
+    titleKey: string;
+    descriptionKey: string;
     image: string;
     background: string;
 }

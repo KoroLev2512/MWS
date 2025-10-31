@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import {Text} from "@/shared/ui/Text";
 import {ExampleSlide} from "@/widgets/types";
 import {FilterButton} from "@/shared/ui/Button/FilterButton";
+import {useTranslation} from "react-i18next";
 
 import styles from "./styles.module.scss";
 
@@ -14,7 +15,7 @@ interface CategorySelectorProps {
 }
 
 export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
-
+    const {t} = useTranslation();
     const [activeIndex, setActiveIndex] = useState(0);
 
     const handleFilterClick = (category: ExampleSlide) => {
@@ -26,7 +27,7 @@ export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
         <div className={styles.bg}>
             <div className={styles.wrapper}>
                 <Text as="h1">
-                    Инновационные решения для вашего бизнеса: выберите ваш путь к успеху
+                    {t('Innovative solutions for your business')}
                 </Text>
                 <div className={styles.filterContainer}>
                     {slides.map((slide, index) => (
@@ -35,7 +36,7 @@ export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
                             onClick={() => handleFilterClick(slide)}
                             className={index === activeIndex ? styles.activeFilter : ''}
                         >
-                            {slide.title}
+                            {t(slide.titleKey)}
                         </FilterButton>
                     ))}
                 </div>
@@ -61,7 +62,7 @@ export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
                 </Swiper>
                 <div className={styles.controls}>
                     <Text as="h3" className={styles.description}>
-                        {slides[activeIndex].description}
+                        {t(slides[activeIndex].descriptionKey)}
                     </Text>
                     <div className={styles.arrowContainer}>
                         <img

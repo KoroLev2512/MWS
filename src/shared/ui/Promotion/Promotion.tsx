@@ -1,9 +1,11 @@
 import React from 'react';
 import {Text} from "../Text";
+import {useTranslation} from "react-i18next";
 
 import styles from "./styles.module.scss";
 
 export const Promotion = () => {
+    const {t} = useTranslation();
     return (
         <div>
             <div className={styles.wrapper}>
@@ -15,11 +17,10 @@ export const Promotion = () => {
                     />
                     <div className={styles.about}>
                         <Text as="h1" className={styles.title}>
-                            Продвигаем малый, средний и крупный бизнес
+                            {t('Promoting small, medium and large businesses')}
                         </Text>
                         <Text as="h4" className={styles.description}>
-                            Наша веб студия специализируется на продвижении бизнеса любого размера. Мы создаем
-                            индивидуальные стратегии для малых, средних и крупных компаний.
+                            {t('Promotion description')}
                         </Text>
                         <img
                             className={styles.icon}
