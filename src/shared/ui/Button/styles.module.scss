@@ -29,10 +29,23 @@
   font-weight: 500;
   line-height: normal;
   white-space: nowrap;
+  transition: all 0.3s ease;
 
-  &:hover {
-    background: var(--brand-blue-color);
-    color: var(--white-color);
+  &:hover:not(.activeFilter) {
+    background: rgba(0, 136, 255, 0.1);
+    border-color: var(--brand-blue-color);
+  }
+
+  &.activeFilter {
+    background: var(--brand-blue-color) !important;
+    color: var(--white-color) !important;
+    border-color: var(--brand-blue-color);
+  }
+
+  &.activeFilter:hover {
+    background: var(--brand-blue-color) !important;
+    color: var(--white-color) !important;
+    opacity: 0.9;
   }
 }
 

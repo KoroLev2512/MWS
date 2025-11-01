@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import {MyButton} from "@/shared/ui/Button/MyButton";
 import {Navigation} from "@/shared/ui/Navigation";
 import Burger from "@/shared/ui/Burger/Burger";
@@ -30,9 +31,12 @@ export const Header = () => {
             <div className={styles.header}>
                 <div className={styles.logo}>
                     <Link href="/">
-                        <img
+                        <Image
                             src='/icons/logo.svg'
                             alt="logo"
+                            width={120}
+                            height={37}
+                            priority
                         />
                     </Link>
                 </div>

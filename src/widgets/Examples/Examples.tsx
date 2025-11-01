@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import React, {useState, useEffect} from 'react';
+import Image from 'next/image';
 import {Text} from "@/shared/ui/Text";
 import {ExampleSlide} from "@/widgets/types";
-import {FilterButton} from "@/shared/ui/Button/FilterButton";
+import {FilterButton, filterButtonStyles} from "@/shared/ui/Button/FilterButton";
 import {useTranslation} from "react-i18next";
+import {ExampleBanner} from "./ExampleBanner";
 
 import styles from "./styles.module.scss";
 
@@ -15,12 +13,35 @@ interface CategorySelectorProps {
 }
 
 export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
     const [activeIndex, setActiveIndex] = useState(0);
+    const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
+    
+    // Listen for language changes and force re-render
+    useEffect(() => {
+        const handleLanguageChange = (lng: string) => {
+            setCurrentLanguage(lng);
+        };
+        
+        // Set initial language
+        setCurrentLanguage(i18n.language);
+        
+        i18n.on('languageChanged', handleLanguageChange);
+        return () => {
+            i18n.off('languageChanged', handleLanguageChange);
+        };
+    }, [i18n]);
 
-    const handleFilterClick = (category: ExampleSlide) => {
-        const index = slides.indexOf(category);
+    const handleFilterClick = (index: number) => {
         setActiveIndex(index);
+    };
+
+    const handlePreviousSlide = () => {
+        setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    };
+
+    const handleNextSlide = () => {
+        setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     };
 
     return (
@@ -32,52 +53,39 @@ export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
                 <div className={styles.filterContainer}>
                     {slides.map((slide, index) => (
                         <FilterButton
-                            key={index}
-                            onClick={() => handleFilterClick(slide)}
-                            className={index === activeIndex ? styles.activeFilter : ''}
+                            key={`${index}-${currentLanguage}`}
+                            onClick={() => handleFilterClick(index)}
+                            className={index === activeIndex ? filterButtonStyles.activeFilter : ''}
                         >
                             {t(slide.titleKey)}
                         </FilterButton>
                     ))}
                 </div>
-                <Swiper
-                    pagination={{clickable: true}}
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                    onSwiper={(swiper) => swiper.slideTo(activeIndex)}
-                    className={styles.carouselContainer}
-                >
-                    {slides.map((slide, index) => (
-                        <SwiperSlide key={index}>
-                            <div>
-                                <img
-                                    src={slide.image}
-                                    className={styles.image}
-                                    alt={`Slide ${index}`}
-                                />
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                <ExampleBanner 
+                    key={`${activeIndex}-${currentLanguage}`} 
+                    slide={slides[activeIndex]} 
+                    index={activeIndex} 
+                />
                 <div className={styles.controls}>
                     <Text as="h3" className={styles.description}>
                         {t(slides[activeIndex].descriptionKey)}
                     </Text>
                     <div className={styles.arrowContainer}>
-                        <img
+                        <Image
                             className={styles.arrow}
                             src='/icons/slick-left-icon.svg'
                             alt={'<'}
                             width={7}
                             height={14}
+                            onClick={handlePreviousSlide}
                         />
-                        <img
+                        <Image
                             className={styles.arrow}
                             src='/icons/slick-right-icon.svg'
                             alt={'>'}
                             width={7}
                             height={14}
+                            onClick={handleNextSlide}
                         />
                     </div>
                 </div>

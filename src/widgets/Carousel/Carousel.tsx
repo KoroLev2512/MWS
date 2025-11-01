@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Image from 'next/image';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Swiper as SwiperType} from 'swiper';
 import 'swiper/css';
@@ -66,17 +67,20 @@ export const Carousel: React.FC<CarouselProps> = ({slides}) => {
                                 <Text as="h1" className={styles.title}>
                                     {t(slide.textKey)}
                                 </Text>
-                                <img
+                                <Image
                                     className={styles.image}
                                     src={slide.image}
                                     alt={`Slide ${index}`}
+                                    width={600}
+                                    height={600}
+                                    priority={index === 0}
                                 />
                             </SwiperSlide>
                         ))}
                     </Swiper>
                 </div>
                 <div className={styles.controls}>
-                    <img
+                    <Image
                         onClick={handlePreviousSlide}
                         className={styles.arrow}
                         src='/icons/slick-left-icon.svg'
@@ -84,7 +88,7 @@ export const Carousel: React.FC<CarouselProps> = ({slides}) => {
                         width={7}
                         height={14}
                     />
-                    <img
+                    <Image
                         onClick={handleNextSlide}
                         className={styles.arrow}
                         src='/icons/slick-right-icon.svg'

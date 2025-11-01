@@ -13,4 +13,9 @@ export interface ExampleSlide {
     descriptionKey: string;
     image: string;
     background: string;
+    stats: {
+        stat1: { value: string; labelKey: string };
+        stat2: { value: string; labelKey: string };
+        stat3: { value: string; labelKey: string };
+    };
 }

@@ -11,11 +11,21 @@ import {carousel_slides, example_slides} from '@/shared/lib/store/slides';
 const App = () =>{
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <Carousel slides={carousel_slides}/>
-            <Features/>
-            <Video/>
-            <Examples slides={example_slides}/>
-            <Promotion/>
+            <div id="services">
+                <Carousel slides={carousel_slides}/>
+            </div>
+            <div id="products">
+                <Features/>
+            </div>
+            <div id="courses">
+                <Video/>
+            </div>
+            <div id="blog">
+                <Examples slides={example_slides}/>
+            </div>
+            <div id="support">
+                <Promotion/>
+            </div>
             <Footer/>
             <SpeedInsights/>
         </Suspense>

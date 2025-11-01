@@ -1,8 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
 import { ButtonProps } from "./types";
 
 import styles from './styles.module.scss';
 
+export { styles as filterButtonStyles };
 
 export const FilterButton: React.FC<ButtonProps> = ({
                                                     children,
@@ -11,7 +13,8 @@ export const FilterButton: React.FC<ButtonProps> = ({
                                                 }: ButtonProps) => {
     return (
         <button
-            className={styles.btn_filter}
+            className={classNames(styles.btn_filter, className)}
+            suppressHydrationWarning
             {...restProps}
         >
             {children}

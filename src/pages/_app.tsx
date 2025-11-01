@@ -1,9 +1,11 @@
 import type {AppProps} from 'next/app'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import '@/app/styles/globals.scss'
 import i18n from '@/shared/config/i18n/i18n'
 
 function App({Component, pageProps}: AppProps) {
+    const [isLanguageReady, setIsLanguageReady] = useState(false);
+    
     useEffect(() => {
         // Sync language from localStorage to i18n and cookies on client-side
         if (typeof window !== 'undefined') {
@@ -11,15 +13,29 @@ function App({Component, pageProps}: AppProps) {
             if (storedLanguage && (storedLanguage === 'en' || storedLanguage === 'ru')) {
                 // Only change if different from current language
                 if (i18n.language !== storedLanguage) {
-                    i18n.changeLanguage(storedLanguage);
+                    // Change language and wait for completion
+                    i18n.changeLanguage(storedLanguage).then(() => {
+                        setIsLanguageReady(true);
+                    });
+                } else {
+                    setIsLanguageReady(true);
                 }
                 // Ensure cookie is set for SSR compatibility
                 if (!document.cookie.includes('language=')) {
                     document.cookie = `language=${storedLanguage}; path=/; max-age=${365 * 24 * 60 * 60}`;
                 }
+            } else {
+                setIsLanguageReady(true);
             }
+        } else {
+            setIsLanguageReady(true);
         }
     }, []);
+    
+    // Wait for language to be ready before rendering
+    if (!isLanguageReady) {
+        return null;
+    }
     
     return <Component {...pageProps} />
 }

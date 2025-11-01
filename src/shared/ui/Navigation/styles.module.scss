@@ -6,7 +6,17 @@
   display: inline-flex;
   align-items: flex-start;
   gap: 45px;
-  cursor: pointer;
+  
+  a {
+    text-decoration: none;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 .text {

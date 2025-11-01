@@ -19,6 +19,18 @@
   display: flex;
   justify-content: flex-start;
   margin-right: 60px;
+  
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 .burger {

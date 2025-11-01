@@ -5,11 +5,31 @@ import {initReactI18next} from 'react-i18next';
 import enTranslations from '../../../../public/locales/en/translation.json';
 import ruTranslations from '../../../../public/locales/ru/translation.json';
 
+// Get initial language from localStorage or cookies
+const getInitialLanguage = (): string => {
+    if (typeof window !== 'undefined') {
+        // Try localStorage first
+        const storedLanguage = localStorage.getItem('language');
+        if (storedLanguage && (storedLanguage === 'en' || storedLanguage === 'ru')) {
+            return storedLanguage;
+        }
+        
+        // Try cookies as fallback
+        const cookies = document.cookie;
+        const languageMatch = cookies.match(/language=([^;]+)/);
+        if (languageMatch && (languageMatch[1] === 'en' || languageMatch[1] === 'ru')) {
+            return languageMatch[1];
+        }
+    }
+    
+    return 'en'; // Default fallback
+};
+
 if (!i18n.isInitialized) {
     i18n
         .use(initReactI18next)
         .init({
-            lng: 'en',
+            lng: getInitialLanguage(),
             fallbackLng: 'en',
             supportedLngs: ['en', 'ru'],
             debug: false,
