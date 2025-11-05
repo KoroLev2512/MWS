@@ -5,9 +5,8 @@ import { NavigationBar } from '@/widgets/NavigationBar';
 import { CookieConsent } from '@/shared/ui/CookieConsent';
 import { LanguageSync } from '@/shared/components/LanguageSync';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mws-eta.vercel.app';
+const SITE_URL = 'https://mws-eta.vercel.app';
 const IMAGE_PNG = `${SITE_URL}/metadata.png`;
-const IMAGE_WEBP = `${SITE_URL}/metadata.webp`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const cookieStore = await cookies();
@@ -65,13 +64,19 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       type: 'website',
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       siteName: 'MWS - Modern Web Solutions',
       title,
       description,
       locale: isRu ? 'ru_RU' : 'en_US',
       images: [
-        { url: IMAGE_PNG, width: 1200, height: 630, alt: title },
+        { 
+          url: IMAGE_PNG, 
+          width: 1200, 
+          height: 630, 
+          alt: title,
+          type: 'image/png',
+        },
       ],
     },
     twitter: {
