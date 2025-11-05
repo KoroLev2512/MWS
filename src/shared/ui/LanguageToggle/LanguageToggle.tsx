@@ -5,18 +5,13 @@ import styles from './styles.module.scss';
 
 export const LanguageToggle: React.FC = () => {
     const {i18n} = useTranslation();
-    const [language, setLanguage] = useState('EN');
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-        // Set initial language on mount
+    const [language, setLanguage] = useState(() => {
         if (typeof window !== 'undefined') {
             const storedLanguage = localStorage.getItem('language');
-            const currentLang = storedLanguage || i18n.language;
-            setLanguage(currentLang.toUpperCase());
+            return (storedLanguage || i18n.language).toUpperCase();
         }
-    }, []);
+        return i18n.language.toUpperCase();
+    });
 
     // Listen for language changes
     useEffect(() => {
@@ -42,7 +37,7 @@ export const LanguageToggle: React.FC = () => {
 
     return (
         <button onClick={toggle} className={styles.lang}>
-            {mounted ? language : 'EN'}
+            {language}
         </button>
     );
 };

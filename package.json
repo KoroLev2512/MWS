@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "preview": "next build && next start -p 3100",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@a1rth/css-normalize": "^1.2.4",
@@ -35,6 +35,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/webpack-dev-server": "^4.7.2",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.1",
     "typescript": "^5.9.3",
     "webpack": "^5.102.1",
     "webpack-cli": "^5.1.4",

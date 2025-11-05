@@ -23,14 +23,11 @@ export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
             setCurrentLanguage(lng);
         };
         
-        // Set initial language
-        setCurrentLanguage(i18n.language);
-        
         i18n.on('languageChanged', handleLanguageChange);
         return () => {
             i18n.off('languageChanged', handleLanguageChange);
         };
-    }, [i18n]);
+    }, [i18n, i18n.language]);
 
     const handleFilterClick = (index: number) => {
         setActiveIndex(index);

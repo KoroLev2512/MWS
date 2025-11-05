@@ -6,23 +6,7 @@ const nextConfig = {
     trailingSlash: true,
     output: "standalone",
     reactStrictMode: false,
-    images: {
-        unoptimized: true,
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'localhost',
-            },
-            {
-                protocol: 'http',
-                hostname: 'localhost',
-            },
-            {
-                protocol: 'https',
-                hostname: 'http.cat',
-            },
-        ],
-    },
+    images: {},
     env: {
         NEXT_PUBLIC_INTERNAL_HOST: process.env.NEXT_PUBLIC_INTERNAL_HOST,
         NEXT_PUBLIC_PUBLIC_HOST: process.env.NEXT_PUBLIC_PUBLIC_HOST,

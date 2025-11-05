@@ -6,7 +6,8 @@ import { CookieConsent } from '@/shared/ui/CookieConsent';
 import { LanguageSync } from '@/shared/components/LanguageSync';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mws-eta.vercel.app';
-const IMAGE_JPG = `${SITE_URL}/metadata.jpg`;
+const IMAGE_PNG = `${SITE_URL}/metadata.png`;
+const IMAGE_WEBP = `${SITE_URL}/metadata.webp`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const cookieStore = await cookies();
@@ -69,13 +70,16 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       locale: isRu ? 'ru_RU' : 'en_US',
-      images: [{ url: IMAGE_JPG, width: 1200, height: 630, alt: title }],
+      images: [
+        { url: IMAGE_PNG, width: 1200, height: 630, alt: title },
+        { url: IMAGE_WEBP, width: 1200, height: 630, alt: title },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [IMAGE_JPG],
+      images: [IMAGE_PNG],
       creator: '@mws',
       site: '@mws',
     },

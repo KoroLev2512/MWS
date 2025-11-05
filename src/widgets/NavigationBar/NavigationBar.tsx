@@ -14,22 +14,21 @@ export const NavigationBar = () => {
     const menuPageIsOpen = useAppStore(state => state.menuPageIsOpen);
     const toggleMenuPage = useAppStore(state => state.toggleMenuPage);
     const toggleContactModal = useAppStore(state => state.toggleContactModal);
-    const [isClosing, setIsClosing] = useState(false);
-    const [shouldRender, setShouldRender] = useState(false);
+    const [animationState, setAnimationState] = useState('closed');
 
     useEffect(() => {
-        if (menuPageIsOpen) {
-            setShouldRender(true);
-            setIsClosing(false);
-        } else if (shouldRender) {
-            setIsClosing(true);
-            const timer = setTimeout(() => {
-                setShouldRender(false);
-                setIsClosing(false);
-            }, 300); // Match animation duration
+        if (menuPageIsOpen && animationState === 'closed') {
+            const timer = setTimeout(() => setAnimationState('open'), 0); // Next tick
             return () => clearTimeout(timer);
+        } else if (!menuPageIsOpen && animationState === 'open') {
+            const timer = setTimeout(() => setAnimationState('closing'), 0); // Next tick
+            const timer2 = setTimeout(() => setAnimationState('closed'), 300); // Match animation duration
+            return () => {
+                clearTimeout(timer);
+                clearTimeout(timer2);
+            };
         }
-    }, [menuPageIsOpen, shouldRender]);
+    }, [menuPageIsOpen, animationState]);
 
     const handleScroll = useCallback((e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
         e.preventDefault();
@@ -51,22 +50,25 @@ export const NavigationBar = () => {
         toggleContactModal(true); // Open contact modal
     }, [toggleMenuPage, toggleContactModal]);
 
-    if (!shouldRender || !ready) return null;
+    if (animationState === 'closed' || !ready) return null;
+
+    const overlayClosing = animationState === 'closing';
+    const menuClosing = animationState === 'closing';
 
     return (
-        <div className={`${styles.overlay} ${isClosing ? styles.closing : ''}`} onClick={handleOverlayClick}>
-            <div className={`${styles.menu} ${isClosing ? styles.menuClosing : ''}`} onClick={(e) => e.stopPropagation()}>
+        <div className={`${styles.overlay} ${overlayClosing ? styles.closing : ''}`} onClick={handleOverlayClick}>
+            <div className={`${styles.menu} ${menuClosing ? styles.menuClosing : ''}`} onClick={(e) => e.stopPropagation()}>
                 <nav className={styles.navigation}>
-                    <Link href="#features" onClick={(e) => handleScroll(e, 'features')}>
+                    <Link href="/#features" onClick={(e) => handleScroll(e, 'features')}>
                         <Text as="h3" className={styles.navItem}>{t('Advantages')}</Text>
                     </Link>
-                    <Link href="#products" onClick={(e) => handleScroll(e, 'products')}>
+                    <Link href="/#products" onClick={(e) => handleScroll(e, 'products')}>
                         <Text as="h3" className={styles.navItem}>{t('Products')}</Text>
                     </Link>
-                    <Link href="#about" onClick={(e) => handleScroll(e, 'about')}>
+                    <Link href="/#about" onClick={(e) => handleScroll(e, 'about')}>
                         <Text as="h3" className={styles.navItem}>{t('About Us')}</Text>
                     </Link>
-                    <Link href="#support" onClick={(e) => handleScroll(e, 'support')}>
+                    <Link href="/#support" onClick={(e) => handleScroll(e, 'support')}>
                         <Text as="h3" className={styles.navItem}>{t('More')}</Text>
                     </Link>
                 </nav>

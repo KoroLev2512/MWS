@@ -11,7 +11,7 @@ interface ExampleBannerProps {
     index?: number;
 }
 
-export const ExampleBanner: React.FC<ExampleBannerProps> = ({ slide, index = 0 }) => {
+export const ExampleBanner: React.FC<ExampleBannerProps> = ({ slide }) => {
     const { t, i18n } = useTranslation();
     const [currentLang, setCurrentLang] = useState(i18n.language);
     
@@ -21,14 +21,11 @@ export const ExampleBanner: React.FC<ExampleBannerProps> = ({ slide, index = 0 }
             setCurrentLang(lng);
         };
         
-        // Set initial language
-        setCurrentLang(i18n.language);
-        
         i18n.on('languageChanged', handleLanguageChange);
         return () => {
             i18n.off('languageChanged', handleLanguageChange);
         };
-    }, [i18n]);
+    }, [i18n, i18n.language]);
 
     return (
         <div className={styles.banner} style={{background: slide.background}}>
