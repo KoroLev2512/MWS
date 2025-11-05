@@ -15,17 +15,31 @@ const App = () =>{
     const currentLanguage = i18n.language || 'en';
     const isRussian = currentLanguage === 'ru';
     
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mws.com';
+    // Use live domain by default so crawlers get absolute URLs in prod
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mws-eta.vercel.app';
     const currentUrl = siteUrl;
     // Provide multiple formats; some platforms (Telegram/VK) ignore WEBP
     const imageWebp = `${siteUrl}/metadata.webp?v=20251105`;
     const imageJpg = `${siteUrl}/metadata.jpg?v=20251105`;
     const imagePng = `${siteUrl}/metadata.png?v=20251105`;
     
-    // SEO Meta Content
-    const title = t('SEO Title');
-    const description = t('SEO Description');
-    const keywords = t('SEO Keywords');
+    // SEO Meta Content with robust fallbacks if i18n isn't ready during SSR
+    const fallbackTitleEn = 'MWS - Web Development, Mobile Apps, CRM Systems & Digital Marketing | Modern Web Solutions';
+    const fallbackDescEn = 'Professional web development, mobile applications, CRM systems, video editing, marketing, and SMM services. 7+ years of experience. 100+ satisfied clients worldwide. Innovative solutions for your business.';
+    const fallbackKeysEn = 'web development, mobile app development, CRM systems, digital marketing, SMM, website creation, landing pages, corporate websites, video editing, advertising creatives, logos, telegram bots, business automation, IT solutions, web studio, MWS';
+    const fallbackTitleRu = 'MWS - Разработка сайтов, мобильных приложений, CRM систем и цифровой маркетинг | Modern Web Solutions';
+    const fallbackDescRu = 'Профессиональная разработка сайтов, мобильных приложений, CRM систем, монтаж видео, маркетинг и SMM услуги. Более 7 лет опыта. 100+ довольных клиентов по всему миру. Инновационные решения для вашего бизнеса.';
+    const fallbackKeysRu = 'разработка сайтов, создание мобильных приложений, CRM системы, цифровой маркетинг, SMM, создание сайтов, лендинги, корпоративные сайты, монтаж видео, рекламные креативы, логотипы, телеграм боты, автоматизация бизнеса, IT решения, веб студия, MWS, разработка веб приложений';
+
+    const safe = (key: string, fallback: string) => {
+        const value = t(key);
+        // If i18n not ready, t may return the key itself → fallback
+        return !value || value === key ? fallback : value;
+    };
+
+    const title = safe('SEO Title', isRussian ? fallbackTitleRu : fallbackTitleEn);
+    const description = safe('SEO Description', isRussian ? fallbackDescRu : fallbackDescEn);
+    const keywords = safe('SEO Keywords', isRussian ? fallbackKeysRu : fallbackKeysEn);
     
     // Structured Data
     const structuredData = {
