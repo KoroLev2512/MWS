@@ -10,10 +10,16 @@ export const useAppStore = create<AppState>()(
             backendIsAvailable: null,
             isLoading: false,
             menuPageIsOpen: false,
+            contactModalIsOpen: false,
             toggleMenuPage: (value) => {
-                set((state) => ({
-                    menuPageIsOpen: !isUndefined(value) ? value : !state.menuPageIsOpen,
-                }));
+                set((state) => {
+                    state.menuPageIsOpen = !isUndefined(value) ? value : !state.menuPageIsOpen;
+                });
+            },
+            toggleContactModal: (value) => {
+                set((state) => {
+                    state.contactModalIsOpen = !isUndefined(value) ? value : !state.contactModalIsOpen;
+                });
             },
         }))
     )

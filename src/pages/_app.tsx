@@ -2,6 +2,7 @@ import type {AppProps} from 'next/app'
 import {useEffect, useState} from 'react'
 import '@/app/styles/globals.scss'
 import i18n from '@/shared/config/i18n/i18n'
+import { NavigationBar } from '@/widgets/NavigationBar'
 
 function App({Component, pageProps}: AppProps) {
     const [isLanguageReady, setIsLanguageReady] = useState(false);
@@ -37,7 +38,12 @@ function App({Component, pageProps}: AppProps) {
         return null;
     }
     
-    return <Component {...pageProps} />
+    return (
+        <>
+            <NavigationBar />
+            <Component {...pageProps} />
+        </>
+    )
 }
 
 // Get initial props to read language preference from cookies on server-side

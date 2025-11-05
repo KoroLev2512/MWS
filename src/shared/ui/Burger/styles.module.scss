@@ -2,43 +2,55 @@
 @import "@/app/styles/colors";
 @import "@/app/styles/mixins";
 
-.burgerBtn {
-  &:hover {
-    background-color: $burger-hover-color;
-  }
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin-right: 7px;
-  margin-left: -9px;
+.burger {
+  width: 32px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  z-index: 101;
+  padding: 0;
+  margin-right: 8px;
+  
+  @media (min-width: 1024px) {
+    display: none;
+  }
 }
 
-.burgerBtn:before {
-  content: '';
-  position: absolute;
-  top: 12px;
-  left: 10px;
-  width: 20px;
-  height: 1.5px;
-  background-color: $brand-blue-color;
-}
-
-.burgerBtn span {
-  position: absolute;
-  top: 19px;
-  left: 10px;
-  width: 20px;
+.line {
+  background-color: #FFFFFF;
+  width: 24px;
   height: 2px;
-  background-color: $brand-blue-color;
+  display: block;
+  position: absolute;
+  transition: all 0.5s ease;
 }
 
-.burgerBtn:after {
-  content: '';
-  position: absolute;
-  bottom: 12px;
-  left: 10px;
-  width: 20px;
-  height: 2px;
-  background-color: $brand-blue-color;
+.line:nth-child(1) {
+  transform: translateY(-7px);
+}
+
+.line:nth-child(2) {
+  opacity: 1;
+}
+
+.line:nth-child(3) {
+  transform: translateY(7px);
+}
+
+// Active states
+.lineTop {
+  transform: translateY(0) rotate(45deg) !important;
+}
+
+.lineMiddle {
+  opacity: 0 !important;
+}
+
+.lineBottom {
+  transform: translateY(0) rotate(-45deg) !important;
 }

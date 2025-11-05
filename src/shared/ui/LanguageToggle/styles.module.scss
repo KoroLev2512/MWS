@@ -8,10 +8,14 @@
   outline: none;
   cursor: pointer;
   transition: opacity 0.2s ease, color 0.2s ease;
+  min-width: 30px;
+  text-align: center;
   
-  &:hover {
-    opacity: 0.8;
-    color: rgba(255, 255, 255, 0.80);
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.8;
+      color: rgba(255, 255, 255, 0.80);
+    }
   }
   
   &:active {

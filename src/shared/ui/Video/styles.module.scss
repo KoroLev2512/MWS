@@ -29,8 +29,11 @@
   transition: all 0.5s ease;
   //background: var(--GR_BL, linear-gradient(90deg, #000 0%, #434343 100%));
   background-color: #000;
-  &:hover {
-    background-color: var(--arrow-hover-color);
+  
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--arrow-hover-color);
+    }
   }
 }
 

@@ -1,18 +1,22 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import classNames from "classnames";
 
 interface Props {
     menuPageIsOpen: boolean;
+    onClick?: () => void;
 }
 
-const Burger: React.FC<Props> = ({ menuPageIsOpen }) => {
+const Burger: React.FC<Props> = ({ menuPageIsOpen, onClick }) => {
     return (
-        <div>
-            <div className={styles.burgerBtn}>
-                <span/>
-            </div>
-        </div>
+        <button
+            className={styles.burger}
+            onClick={onClick}
+            aria-label={menuPageIsOpen ? "Закрыть меню" : "Открыть меню"}
+        >
+            <i className={`${styles.line} ${menuPageIsOpen ? styles.lineTop : ''}`}></i>
+            <i className={`${styles.line} ${menuPageIsOpen ? styles.lineMiddle : ''}`}></i>
+            <i className={`${styles.line} ${menuPageIsOpen ? styles.lineBottom : ''}`}></i>
+        </button>
     );
 };
 

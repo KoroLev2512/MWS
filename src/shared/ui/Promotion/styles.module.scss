@@ -4,7 +4,8 @@
   max-width: 1200px;
   max-height: 555px;
   border-radius: 20px;
-  background: linear-gradient(90deg, rgba(20, 136, 204, 0.10) 55.78%, rgba(43, 50, 178, 0.10) 100%);  margin: 130px auto;
+  background: linear-gradient(90deg, rgba(20, 136, 204, 0.10) 55.78%, rgba(43, 50, 178, 0.10) 100%);
+  margin: 130px auto;
 }
 
 .content {
@@ -72,7 +73,8 @@
 
 @media (max-width: 800px) {
   .wrapper {
-    max-height: 800px;
+    max-height: 700px;
+    margin: 60px auto;
   }
 
   .content {

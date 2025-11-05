@@ -71,22 +71,22 @@ export const Examples: React.FC<CategorySelectorProps> = ({slides}) => {
                         {t(slides[activeIndex].descriptionKey)}
                     </Text>
                     <div className={styles.arrowContainer}>
-                        <Image
-                            className={styles.arrow}
-                            src='/icons/slick-left-icon.svg'
-                            alt={'<'}
-                            width={7}
-                            height={14}
-                            onClick={handlePreviousSlide}
-                        />
-                        <Image
-                            className={styles.arrow}
-                            src='/icons/slick-right-icon.svg'
-                            alt={'>'}
-                            width={7}
-                            height={14}
-                            onClick={handleNextSlide}
-                        />
+                        <div className={styles.arrow} onClick={handlePreviousSlide}>
+                            <Image
+                                src='/icons/slick-left-icon.svg'
+                                alt={'<'}
+                                width={7}
+                                height={14}
+                            />
+                        </div>
+                        <div className={styles.arrow} onClick={handleNextSlide}>
+                            <Image
+                                src='/icons/slick-right-icon.svg'
+                                alt={'>'}
+                                width={7}
+                                height={14}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

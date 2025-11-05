@@ -80,22 +80,22 @@ export const Carousel: React.FC<CarouselProps> = ({slides}) => {
                     </Swiper>
                 </div>
                 <div className={styles.controls}>
-                    <Image
-                        onClick={handlePreviousSlide}
-                        className={styles.arrow}
-                        src='/icons/slick-left-icon.svg'
-                        alt={'<'}
-                        width={7}
-                        height={14}
-                    />
-                    <Image
-                        onClick={handleNextSlide}
-                        className={styles.arrow}
-                        src='/icons/slick-right-icon.svg'
-                        alt={'>'}
-                        width={7}
-                        height={14}
-                    />
+                    <div className={styles.arrow} onClick={handlePreviousSlide}>
+                        <Image
+                            src='/icons/slick-left-icon.svg'
+                            alt={'<'}
+                            width={7}
+                            height={14}
+                        />
+                    </div>
+                    <div className={styles.arrow} onClick={handleNextSlide}>
+                        <Image
+                            src='/icons/slick-right-icon.svg'
+                            alt={'>'}
+                            width={7}
+                            height={14}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

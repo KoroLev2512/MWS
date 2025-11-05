@@ -18,20 +18,17 @@ export const Navigation = () => {
     
     return (
         <div className={styles.section}>
-            <Link href="#services" onClick={(e) => handleScroll(e, 'services')}>
-                <Text as="h4" className={styles.text}>{t('Services')}</Text>
+            <Link href="#features" onClick={(e) => handleScroll(e, 'features')}>
+                <Text as="h4" className={styles.text}>{t('Advantages')}</Text>
             </Link>
             <Link href="#products" onClick={(e) => handleScroll(e, 'products')}>
                 <Text as="h4" className={styles.text}>{t('Products')}</Text>
             </Link>
-            <Link href="#courses" onClick={(e) => handleScroll(e, 'courses')}>
-                <Text as="h4" className={styles.text}>{t('Courses')}</Text>
-            </Link>
-            <Link href="#blog" onClick={(e) => handleScroll(e, 'blog')}>
-                <Text as="h4" className={styles.text}>{t('Blog')}</Text>
+            <Link href="#about" onClick={(e) => handleScroll(e, 'about')}>
+                <Text as="h4" className={styles.text}>{t('About Us')}</Text>
             </Link>
             <Link href="#support" onClick={(e) => handleScroll(e, 'support')}>
-                <Text as="h4" className={styles.text}>{t('Support')}</Text>
+                <Text as="h4" className={styles.text}>{t('More')}</Text>
             </Link>
         </div>
     )

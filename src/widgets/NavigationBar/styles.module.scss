@@ -1,0 +1,90 @@
+@import "../../app/styles/variables";
+@import "../../app/styles/colors";
+@import "../../app/styles/mixins";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  animation: fadeIn 0.3s ease;
+  
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 400px;
+  background-color: #1F2937;
+  padding: 80px 40px 40px;
+  z-index: 51;
+  animation: slideIn 0.3s ease;
+  overflow-y: auto;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  
+  a {
+    text-decoration: none;
+    color: var(--white-color);
+    transition: opacity 0.2s ease;
+    
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.navItem {
+  color: var(--white-color);
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.buttonContainer {
+  margin-top: 40px;
+  
+  button {
+    width: 100%;
+  }
+}
+
+.languageToggle {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+

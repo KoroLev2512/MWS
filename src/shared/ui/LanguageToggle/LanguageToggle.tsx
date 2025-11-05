@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 
 import styles from './styles.module.scss';
 
-export const LanguageToggle = () => {
+export const LanguageToggle: React.FC = () => {
     const {i18n} = useTranslation();
     const [language, setLanguage] = useState('EN');
     const [mounted, setMounted] = useState(false);

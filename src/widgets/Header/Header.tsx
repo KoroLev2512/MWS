@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import {MyButton} from "@/shared/ui/Button/MyButton";
 import {Navigation} from "@/shared/ui/Navigation";
@@ -6,26 +6,51 @@ import Burger from "@/shared/ui/Burger/Burger";
 import {useAppStore} from "@/shared/lib/store/appStore";
 import Link from "next/link";
 import {LanguageToggle} from "@/shared/ui/LanguageToggle";
+import {ContactModal} from "@/shared/ui/ContactModal";
+import {SuccessModal} from "@/shared/ui/SuccessModal";
 import {useTranslation} from "react-i18next";
 
 import styles from './styles.module.scss';
 
-const NavigationBarToggle = (): React.ReactElement => {
-    const [toggleMenuPage, menuPageIsOpen] = useAppStore(state => [state.toggleMenuPage, state.menuPageIsOpen]);
+const NavigationBarToggle = React.memo((): React.ReactElement => {
+    const toggleMenuPage = useAppStore(state => state.toggleMenuPage);
+    const menuPageIsOpen = useAppStore(state => state.menuPageIsOpen);
 
-    const handleClick = () => {
+    const handleToggle = () => {
         toggleMenuPage();
     };
 
     return (
         <div>
-            <Burger menuPageIsOpen={menuPageIsOpen}/>
+            <Burger menuPageIsOpen={menuPageIsOpen} onClick={handleToggle}/>
         </div>
     );
-};
+});
+
+NavigationBarToggle.displayName = 'NavigationBarToggle';
 
 export const Header = () => {
     const {t} = useTranslation();
+    const contactModalIsOpen = useAppStore(state => state.contactModalIsOpen);
+    const toggleContactModal = useAppStore(state => state.toggleContactModal);
+    const [successModalIsOpen, setSuccessModalIsOpen] = useState(false);
+
+    const handleContactClick = () => {
+        toggleContactModal(true);
+    };
+
+    const handleCloseModal = () => {
+        toggleContactModal(false);
+    };
+
+    const handleSuccess = () => {
+        setSuccessModalIsOpen(true);
+    };
+
+    const handleCloseSuccessModal = () => {
+        setSuccessModalIsOpen(false);
+    };
+
     return (
         <>
             <div className={styles.header}>
@@ -41,19 +66,28 @@ export const Header = () => {
                     </Link>
                 </div>
                 <Navigation/>
-                <div className={styles.button}>
-                    <MyButton>
-                        {t('Contact')}
-                    </MyButton>
-                    <MyButton>
-                        {t('More')}
-                    </MyButton>
+                <div className={styles.rightSection}>
+                    <div className={styles.button}>
+                        <MyButton onClick={handleContactClick}>
+                            {t('Contact')}
+                        </MyButton>
+                        {/* <MyButton>
+                            {t('More')}
+                        </MyButton> */}
+                    </div>
+                    <LanguageToggle />
+                    <NavigationBarToggle/>
                 </div>
-                <LanguageToggle/>
             </div>
-            {/*<div>*/}
-            {/*   <NavigationBarToggle/>*/}
-            {/*</div>*/}
+            <ContactModal 
+                isOpen={contactModalIsOpen} 
+                onClose={handleCloseModal}
+                onSuccess={handleSuccess}
+            />
+            <SuccessModal 
+                isOpen={successModalIsOpen} 
+                onClose={handleCloseSuccessModal}
+            />
         </>
     );
 };

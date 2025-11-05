@@ -108,7 +108,7 @@ export const example_slides: IExampleSlides[] = [
     {
         titleKey: 'Video editing',
         descriptionKey: 'Video editing description',
-        image: "/images/examples/landing.png",
+        image: "/images/examples/video-editing.png",
         background: 'linear-gradient(90deg, #29323C 0%, #485563 100%)',
         stats: {
             stat1: { value: '420+', labelKey: 'Videos edited' },
@@ -119,7 +119,7 @@ export const example_slides: IExampleSlides[] = [
     {
         titleKey: 'Marketing',
         descriptionKey: 'Marketing description',
-        image: "/images/examples/landing.png",
+        image: "/images/examples/marketing.png",
         background: 'linear-gradient(90deg, #134E5E 0%, #71B280 100%)',
         stats: {
             stat1: { value: '156', labelKey: 'Campaigns launched' },
@@ -130,7 +130,7 @@ export const example_slides: IExampleSlides[] = [
     {
         titleKey: 'Logos',
         descriptionKey: 'Logos description',
-        image: "/images/examples/landing.png",
+        image: "/images/examples/logos.png",
         background: 'linear-gradient(90deg, rgba(255, 75, 31, 0.93) 0%, #FF9068 100%)',
         stats: {
             stat1: { value: '340+', labelKey: 'Logos designed' },
@@ -141,7 +141,7 @@ export const example_slides: IExampleSlides[] = [
     {
         titleKey: 'Advertising creatives',
         descriptionKey: 'Advertising creatives description',
-        image: "/images/examples/landing.png",
+        image: "/images/examples/creatives.png",
         background: 'linear-gradient(90deg, #16222A 0%, #3A6073 100%)',
         stats: {
             stat1: { value: '580+', labelKey: 'Creatives made' },
@@ -152,7 +152,7 @@ export const example_slides: IExampleSlides[] = [
     {
         titleKey: 'CMS website',
         descriptionKey: 'CMS website description',
-        image: "/images/examples/landing.png",
+        image: "/images/examples/cms-website.png",
         background: 'linear-gradient(90deg, #457FCA 0%, #5691C8 100%)',
         stats: {
             stat1: { value: '145', labelKey: 'CMS websites' },
@@ -163,7 +163,7 @@ export const example_slides: IExampleSlides[] = [
     {
         titleKey: 'SMM',
         descriptionKey: 'SMM description',
-        image: "/images/examples/landing.png",
+        image: "/images/examples/smm.png",
         background: 'linear-gradient(90deg, #000 0%, #434343 100%)',
         stats: {
             stat1: { value: '87', labelKey: 'Accounts managed' },

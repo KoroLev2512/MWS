@@ -14,13 +14,13 @@ const App = () =>{
             <div id="services">
                 <Carousel slides={carousel_slides}/>
             </div>
-            <div id="products">
+            <div id="features">
                 <Features/>
             </div>
-            <div id="courses">
+            <div id="about">
                 <Video/>
             </div>
-            <div id="blog">
+            <div id="products">
                 <Examples slides={example_slides}/>
             </div>
             <div id="support">
