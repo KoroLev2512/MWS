@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Text } from '@/shared/ui/Text';
