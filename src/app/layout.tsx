@@ -8,8 +8,8 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mws-eta.vercel.app
 const IMAGE_JPG = `${SITE_URL}/metadata.jpg`;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const cookieStore = cookies();
-  const hdrs = headers();
+  const cookieStore = await cookies();
+  const hdrs = await headers();
   const acceptLang = hdrs.get('accept-language') || '';
   const cookieLang = cookieStore.get('language')?.value;
   const isRu = (cookieLang === 'ru') || (/\bru\b/i.test(acceptLang));
