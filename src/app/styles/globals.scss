@@ -1,5 +1,5 @@
-@import "colors";
-@import "mixins";
+@use "colors";
+@use "mixins";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700&display=swap');
 
 @font-face {
@@ -128,7 +128,7 @@ body {
 //}
 
 p {
-  @include paragraph-2;
+  @include mixins.paragraph-2;
   margin: 0;
   margin-bottom: 0.5em;
 }
@@ -143,27 +143,27 @@ h6 {
 }
 
 h1 {
-  @include heading-1;
+  @include mixins.heading-1;
   color: var(--main-color);
 }
 
 h2 {
-  @include heading-2;
+  @include mixins.heading-2;
   color: var(--main-color);
 }
 
 h3 {
-  @include heading-3;
+  @include mixins.heading-3;
   color: var(--main-color);
 }
 
 h4 {
-  @include heading-4;
+  @include mixins.heading-4;
   color: var(--main-color);
 }
 
 h5 {
-  @include heading-5;
+  @include mixins.heading-5;
   color: var(--main-color);
 }
 

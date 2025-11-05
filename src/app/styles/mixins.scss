@@ -1,5 +1,5 @@
-@import "variables";
-@import "colors";
+@use "variables";
+@use "colors";
 
 // paragraphs
 @mixin paragraph-1 {

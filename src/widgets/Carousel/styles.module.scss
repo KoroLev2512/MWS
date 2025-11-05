@@ -1,6 +1,6 @@
-@import "../../app/styles/variables";
-@import "../../app/styles/colors";
-@import "../../app/styles/mixins";
+@use "../../app/styles/variables";
+@use "../../app/styles/colors";
+@use "../../app/styles/mixins";
 
 .hero {
   overflow-x: hidden;
