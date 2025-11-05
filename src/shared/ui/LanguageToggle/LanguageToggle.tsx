@@ -10,15 +10,18 @@ export const LanguageToggle: React.FC = () => {
     const [language, setLanguage] = useState(() => {
         if (typeof window !== 'undefined') {
             const storedLanguage = localStorage.getItem('language');
-            return (storedLanguage || i18n.language).toUpperCase();
+            const currentLang = storedLanguage || i18n.language || 'en';
+            return currentLang.toUpperCase();
         }
-        return i18n.language.toUpperCase();
+        return (i18n.language || 'en').toUpperCase();
     });
 
     // Listen for language changes
     useEffect(() => {
         const handleLanguageChange = (lng: string) => {
-            setLanguage(lng.toUpperCase());
+            if (lng) {
+                setLanguage(lng.toUpperCase());
+            }
         };
         i18n.on('languageChanged', handleLanguageChange);
         return () => {
@@ -27,7 +30,8 @@ export const LanguageToggle: React.FC = () => {
     }, [i18n]);
 
     const toggle = () => {
-        const newLanguage = i18n.language === 'ru' ? 'en' : 'ru';
+        const currentLang = i18n.language || 'en';
+        const newLanguage = currentLang === 'ru' ? 'en' : 'ru';
         i18n.changeLanguage(newLanguage);
         // Save to both localStorage and cookies for SSR compatibility
         if (typeof window !== 'undefined') {
