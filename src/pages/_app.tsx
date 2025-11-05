@@ -6,7 +6,8 @@ import { NavigationBar } from '@/widgets/NavigationBar'
 import { CookieConsent } from '@/shared/ui/CookieConsent'
 
 function App({Component, pageProps}: AppProps) {
-    const [isLanguageReady, setIsLanguageReady] = useState(false);
+    // Default to true so SSR is never blocked
+    const [isLanguageReady, setIsLanguageReady] = useState(true);
     
     useEffect(() => {
         // Sync language from localStorage/cookies to i18n on client-side
@@ -42,11 +43,6 @@ function App({Component, pageProps}: AppProps) {
             setIsLanguageReady(true);
         }
     }, []);
-    
-    // Wait for language to be ready before rendering
-    if (!isLanguageReady) {
-        return null;
-    }
     
     return (
         <>
