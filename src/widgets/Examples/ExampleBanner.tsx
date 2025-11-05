@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+"use client";
+
+import React from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import { Text } from '@/shared/ui/Text';
@@ -12,20 +14,7 @@ interface ExampleBannerProps {
 }
 
 export const ExampleBanner: React.FC<ExampleBannerProps> = ({ slide }) => {
-    const { t, i18n } = useTranslation();
-    const [currentLang, setCurrentLang] = useState(i18n.language);
-    
-    // Listen for language changes and force re-render
-    useEffect(() => {
-        const handleLanguageChange = (lng: string) => {
-            setCurrentLang(lng);
-        };
-        
-        i18n.on('languageChanged', handleLanguageChange);
-        return () => {
-            i18n.off('languageChanged', handleLanguageChange);
-        };
-    }, [i18n, i18n.language]);
+    const { t } = useTranslation();
 
     return (
         <div className={styles.banner} style={{background: slide.background}}>
@@ -69,4 +58,3 @@ export const ExampleBanner: React.FC<ExampleBannerProps> = ({ slide }) => {
         </div>
     );
 };
-

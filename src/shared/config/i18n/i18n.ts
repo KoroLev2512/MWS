@@ -25,7 +25,8 @@ const getInitialLanguage = (): string => {
     return 'en'; // Default fallback
 };
 
-if (!i18n.isInitialized) {
+// Only initialize on client side or if not already initialized
+if (typeof window !== 'undefined' && !i18n.isInitialized) {
     i18n
         .use(initReactI18next)
         .init({

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text } from '../Text';
@@ -129,4 +131,3 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onS
         </div>
     );
 };
-

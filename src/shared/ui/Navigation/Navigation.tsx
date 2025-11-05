@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Text } from "../Text";
@@ -18,16 +20,16 @@ export const Navigation = () => {
     
     return (
         <div className={styles.section}>
-            <Link href="#features" onClick={(e) => handleScroll(e, 'features')}>
+            <Link href="/#features" onClick={(e) => handleScroll(e, 'features')}>
                 <Text as="h4" className={styles.text}>{t('Advantages')}</Text>
             </Link>
-            <Link href="#products" onClick={(e) => handleScroll(e, 'products')}>
+            <Link href="/#products" onClick={(e) => handleScroll(e, 'products')}>
                 <Text as="h4" className={styles.text}>{t('Products')}</Text>
             </Link>
-            <Link href="#about" onClick={(e) => handleScroll(e, 'about')}>
+            <Link href="/#about" onClick={(e) => handleScroll(e, 'about')}>
                 <Text as="h4" className={styles.text}>{t('About Us')}</Text>
             </Link>
-            <Link href="#support" onClick={(e) => handleScroll(e, 'support')}>
+            <Link href="/#support" onClick={(e) => handleScroll(e, 'support')}>
                 <Text as="h4" className={styles.text}>{t('More')}</Text>
             </Link>
         </div>
