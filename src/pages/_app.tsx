@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 import '@/app/styles/globals.scss'
 import i18n from '@/shared/config/i18n/i18n'
 import { NavigationBar } from '@/widgets/NavigationBar'
+import { CookieConsent } from '@/shared/ui/CookieConsent'
 
 function App({Component, pageProps}: AppProps) {
     const [isLanguageReady, setIsLanguageReady] = useState(false);
@@ -51,6 +52,7 @@ function App({Component, pageProps}: AppProps) {
         <>
             <NavigationBar />
             <Component {...pageProps} />
+            <CookieConsent />
         </>
     )
 }
