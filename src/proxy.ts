@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   // Get language from cookie
   const languageCookie = request.cookies.get('language')?.value;
   
-  // If no language cookie, check localStorage via headers (not directly accessible in middleware)
+  // If no language cookie, check localStorage via headers (not directly accessible in proxy)
   // Default to 'en' if nothing is found
   const language = languageCookie && (languageCookie === 'en' || languageCookie === 'ru') 
     ? languageCookie 
