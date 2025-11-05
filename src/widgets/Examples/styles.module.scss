@@ -69,7 +69,6 @@
     align-items: center;
     justify-content: center;
 
-    // Стили для изображений внутри
     :global(img) {
         transition: filter 0.3s ease;
         display: block;
@@ -144,36 +143,32 @@
         padding: 80px 0 20px;
         overflow-x: visible;
         max-width: 100%;
-        align-items: flex-start !important;
+        align-items: flex-start;
 
         h1 {
-            margin-left: 20px !important;
-            margin-right: 20px !important;
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-            text-align: left !important;
-            display: flex !important;
-            justify-content: flex-start !important;
-            align-items: flex-start !important;
-            width: 100%;
+            margin: 0 20px;
+            text-align: left;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
             padding: 0;
         }
     }
 
     .title {
-        text-align: left !important;
-        display: flex !important;
-        justify-content: flex-start !important;
-        align-items: flex-start !important;
-        margin-left: 20px !important;
-        margin-right: 20px !important;
+        text-align: left;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-left: 20px;
+        margin-right: 20px;
         width: 100%;
     }
 
     .description {
         text-align: left;
-        width: calc(100% - 40px) !important;
-        max-width: 100% !important;
+        width: calc(100% - 40px);
+        max-width: 100%;
     }
 
     .filterContainer {
