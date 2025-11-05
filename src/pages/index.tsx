@@ -17,7 +17,10 @@ const App = () =>{
     
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mws.com';
     const currentUrl = siteUrl;
-    const imageUrl = `${siteUrl}/metadata.webp`;
+    // Provide multiple formats; some platforms (Telegram/VK) ignore WEBP
+    const imageWebp = `${siteUrl}/metadata.webp?v=20251105`;
+    const imageJpg = `${siteUrl}/metadata.jpg?v=20251105`;
+    const imagePng = `${siteUrl}/metadata.png?v=20251105`;
     
     // SEO Meta Content
     const title = t('SEO Title');
@@ -31,7 +34,7 @@ const App = () =>{
         "name": "MWS - Modern Web Solutions",
         "alternateName": "MWS",
         "url": siteUrl,
-        "logo": imageUrl,
+        "logo": imageJpg,
         "description": description,
         "address": {
             "@type": "PostalAddress",
@@ -116,12 +119,19 @@ const App = () =>{
                 <meta property="og:site_name" content="MWS - Modern Web Solutions" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
-                <meta property="og:image" content={imageUrl} />
-                <meta property="og:image:secure_url" content={imageUrl} />
+                {/* Prefer JPG for broader compatibility; include PNG/WEBP fallbacks */}
+                <meta property="og:image" content={imageJpg} />
+                <meta property="og:image:secure_url" content={imageJpg} />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image" content={imagePng} />
+                <meta property="og:image:type" content="image/png" />
+                <meta property="og:image" content={imageWebp} />
                 <meta property="og:image:type" content="image/webp" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:alt" content={title} />
+                {/* VK-specific (optional, some clients read it) */}
+                <meta property="vk:image" content={imageJpg} />
                 <meta property="og:locale" content={isRussian ? "ru_RU" : "en_US"} />
                 <meta property="og:locale:alternate" content={isRussian ? "en_US" : "ru_RU"} />
                 
@@ -130,7 +140,7 @@ const App = () =>{
                 <meta name="twitter:url" content={currentUrl} />
                 <meta name="twitter:title" content={title} />
                 <meta name="twitter:description" content={description} />
-                <meta name="twitter:image" content={imageUrl} />
+                <meta name="twitter:image" content={imageJpg} />
                 <meta name="twitter:image:alt" content={title} />
                 <meta name="twitter:creator" content="@mws" />
                 <meta name="twitter:site" content="@mws" />
