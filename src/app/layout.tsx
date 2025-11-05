@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { cookies, headers } from 'next/headers';
 import '@/app/styles/globals.scss';
+import { NavigationBar } from '@/widgets/NavigationBar';
+import { CookieConsent } from '@/shared/ui/CookieConsent';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mws-eta.vercel.app';
 const IMAGE_JPG = `${SITE_URL}/metadata.jpg`;
@@ -71,7 +73,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavigationBar />
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }
