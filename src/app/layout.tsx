@@ -66,6 +66,13 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': isRu ? 'RU' : 'US',
       'geo.placename': isRu ? 'Russia' : 'Global',
+      'theme-color': '#0088FF',
+      'msapplication-TileColor': '#0088FF',
+    },
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+      maximumScale: 5,
     },
   };
 }

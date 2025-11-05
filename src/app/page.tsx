@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Suspense } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Carousel } from '@/widgets/Carousel';
