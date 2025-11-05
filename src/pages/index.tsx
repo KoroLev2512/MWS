@@ -11,15 +11,12 @@ import {Footer} from "@/widgets/Footer";
 import {carousel_slides, example_slides} from '@/shared/lib/store/slides';
 import {useTranslation} from 'react-i18next';
 
-// Import translations directly for SSR
-import enTranslations from '../../../public/locales/en/translation.json';
-import ruTranslations from '../../../public/locales/ru/translation.json';
-
 interface PageProps {
     initialLanguage?: string;
+    initialTranslations?: Record<string, string>;
 }
 
-const App = ({ initialLanguage }: PageProps) => {
+const App = ({ initialLanguage, initialTranslations }: PageProps) => {
     const { t, i18n } = useTranslation();
     // Use SSR language if available, otherwise fallback to client-side detection
     const currentLanguage = initialLanguage || i18n.language || 'en';
@@ -27,9 +24,8 @@ const App = ({ initialLanguage }: PageProps) => {
     
     // Get translations for SSR (fallback to client-side i18n)
     const getTranslation = (key: string): string => {
-        if (initialLanguage) {
-            const translations = initialLanguage === 'ru' ? ruTranslations : enTranslations;
-            return (translations as Record<string, string>)[key] || key;
+        if (initialTranslations && initialLanguage) {
+            return initialTranslations[key] || key;
         }
         return t(key);
     };
@@ -245,10 +241,42 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context)
             detectedLanguage = languageMatch[1];
         }
     }
+    // Safeguard: only allow supported
+    if (detectedLanguage !== 'en' && detectedLanguage !== 'ru') {
+        detectedLanguage = 'en';
+    }
+
+    // Load minimal translations on server to render meta tags for crawlers
+    let initialTranslations: Record<string, string> | undefined;
+    try {
+        const fs = await import('fs/promises');
+        const path = await import('path');
+        const filePath = path.join(process.cwd(), 'public', 'locales', detectedLanguage, 'translation.json');
+        const raw = await fs.readFile(filePath, 'utf8');
+        const all = JSON.parse(raw) as Record<string, string>;
+        const keysNeeded = [
+            'SEO Title',
+            'SEO Description',
+            'SEO Keywords',
+            'Web development',
+            'Landing page description',
+            'Mobile apps',
+            'Mobile application description',
+            'CRM systems',
+            'CRM system description',
+        ];
+        initialTranslations = keysNeeded.reduce((acc, k) => {
+            if (all[k]) acc[k] = all[k];
+            return acc;
+        }, {} as Record<string, string>);
+    } catch {
+        // ignore fs errors; fall back to client translation
+    }
     
     return {
         props: {
             initialLanguage: detectedLanguage,
+            initialTranslations,
         },
     };
 };
