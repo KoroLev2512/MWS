@@ -30,7 +30,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'MWS - Web Development, Mobile Apps, CRM Systems & Digital Marketing',
     description: 'Professional web development, mobile applications, CRM systems, video editing, marketing, and SMM services. 7+ years of experience. 100+ satisfied clients worldwide.',
-    images: ['https://mws-eta.vercel.app/metadata.png'],
+    images: [
+      {
+        url: 'https://mws-eta.vercel.app/metadata.png',
+        alt: 'MWS - Web Development, Mobile Apps, CRM Systems & Digital Marketing',
+      },
+    ],
   },
   viewport: 'width=device-width, initial-scale=1',
   themeColor: '#0088FF',
