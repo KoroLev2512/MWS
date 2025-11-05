@@ -21,11 +21,39 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = isRu
     ? 'Профессиональная разработка сайтов, мобильных приложений, CRM систем, монтаж видео, маркетинг и SMM услуги. Более 7 лет опыта. 100+ довольных клиентов по всему миру.'
     : 'Professional web development, mobile applications, CRM systems, video editing, marketing, and SMM services. 7+ years of experience. 100+ satisfied clients worldwide.';
+  const keywords = isRu
+    ? [
+        'разработка сайтов',
+        'мобильные приложения',
+        'CRM системы',
+        'цифровой маркетинг',
+        'SMM',
+        'создание сайтов',
+        'веб-разработка',
+        'продвижение сайтов',
+        'MWS',
+        'Modern Web Solutions',
+      ]
+    : [
+        'web development',
+        'mobile apps',
+        'CRM systems',
+        'digital marketing',
+        'SMM',
+        'website creation',
+        'web development',
+        'website promotion',
+        'MWS',
+        'Modern Web Solutions',
+      ];
 
   return {
     metadataBase: new URL(SITE_URL),
     title,
     description,
+    keywords,
+    authors: [{ name: 'Modern Web Solutions', url: SITE_URL }],
+    creator: 'danverbraginsky',
     applicationName: 'MWS - Modern Web Solutions',
     alternates: {
       canonical: '/',
@@ -52,12 +80,7 @@ export async function generateMetadata(): Promise<Metadata> {
       site: '@mws',
     },
     icons: {
-      icon: [
-        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-        { url: '/favicon.ico' },
-      ],
-      apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+      icon: [{ url: '/favicon.ico' }],
     },
     manifest: '/manifest.json',
     robots: {
@@ -78,9 +101,16 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const hdrs = await headers();
+  const acceptLang = hdrs.get('accept-language') || '';
+  const cookieLang = cookieStore.get('language')?.value;
+  const isRu = (cookieLang === 'ru') || (/\bru\b/i.test(acceptLang));
+  const lang = isRu ? 'ru' : 'en';
+
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body>
         <LanguageSync />
         <NavigationBar />
