@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Text } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +12,22 @@ export const NavigationBar = () => {
     const menuPageIsOpen = useAppStore(state => state.menuPageIsOpen);
     const toggleMenuPage = useAppStore(state => state.toggleMenuPage);
     const toggleContactModal = useAppStore(state => state.toggleContactModal);
+    const [isClosing, setIsClosing] = useState(false);
+    const [shouldRender, setShouldRender] = useState(false);
+
+    useEffect(() => {
+        if (menuPageIsOpen) {
+            setShouldRender(true);
+            setIsClosing(false);
+        } else if (shouldRender) {
+            setIsClosing(true);
+            const timer = setTimeout(() => {
+                setShouldRender(false);
+                setIsClosing(false);
+            }, 300); // Match animation duration
+            return () => clearTimeout(timer);
+        }
+    }, [menuPageIsOpen, shouldRender]);
 
     const handleScroll = useCallback((e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
         e.preventDefault();
@@ -33,11 +49,11 @@ export const NavigationBar = () => {
         toggleContactModal(true); // Open contact modal
     }, [toggleMenuPage, toggleContactModal]);
 
-    if (!menuPageIsOpen || !ready) return null;
+    if (!shouldRender || !ready) return null;
 
     return (
-        <div className={styles.overlay} onClick={handleOverlayClick}>
-            <div className={styles.menu} onClick={(e) => e.stopPropagation()}>
+        <div className={`${styles.overlay} ${isClosing ? styles.closing : ''}`} onClick={handleOverlayClick}>
+            <div className={`${styles.menu} ${isClosing ? styles.menuClosing : ''}`} onClick={(e) => e.stopPropagation()}>
                 <nav className={styles.navigation}>
                     <Link href="#features" onClick={(e) => handleScroll(e, 'features')}>
                         <Text as="h3" className={styles.navItem}>{t('Advantages')}</Text>
