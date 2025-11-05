@@ -72,7 +72,6 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: isRu ? 'ru_RU' : 'en_US',
       images: [
         { url: IMAGE_PNG, width: 1200, height: 630, alt: title },
-        { url: IMAGE_WEBP, width: 1200, height: 630, alt: title },
       ],
     },
     twitter: {
