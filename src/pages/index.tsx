@@ -1,5 +1,6 @@
 import React, {Suspense} from "react";
 import Head from 'next/head';
+import {GetServerSideProps} from 'next';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import {Carousel} from '@/widgets/Carousel';
 import {Features} from '@/shared/ui/Feature';
@@ -10,10 +11,28 @@ import {Footer} from "@/widgets/Footer";
 import {carousel_slides, example_slides} from '@/shared/lib/store/slides';
 import {useTranslation} from 'react-i18next';
 
-const App = () =>{
+// Import translations directly for SSR
+import enTranslations from '../../../public/locales/en/translation.json';
+import ruTranslations from '../../../public/locales/ru/translation.json';
+
+interface PageProps {
+    initialLanguage?: string;
+}
+
+const App = ({ initialLanguage }: PageProps) => {
     const { t, i18n } = useTranslation();
-    const currentLanguage = i18n.language || 'en';
+    // Use SSR language if available, otherwise fallback to client-side detection
+    const currentLanguage = initialLanguage || i18n.language || 'en';
     const isRussian = currentLanguage === 'ru';
+    
+    // Get translations for SSR (fallback to client-side i18n)
+    const getTranslation = (key: string): string => {
+        if (initialLanguage) {
+            const translations = initialLanguage === 'ru' ? ruTranslations : enTranslations;
+            return (translations as Record<string, string>)[key] || key;
+        }
+        return t(key);
+    };
     
     // Use live domain by default so crawlers get absolute URLs in prod
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mws-eta.vercel.app';
@@ -32,8 +51,8 @@ const App = () =>{
     const fallbackKeysRu = 'разработка сайтов, создание мобильных приложений, CRM системы, цифровой маркетинг, SMM, создание сайтов, лендинги, корпоративные сайты, монтаж видео, рекламные креативы, логотипы, телеграм боты, автоматизация бизнеса, IT решения, веб студия, MWS, разработка веб приложений';
 
     const safe = (key: string, fallback: string) => {
-        const value = t(key);
-        // If i18n not ready, t may return the key itself → fallback
+        const value = getTranslation(key);
+        // If translation not ready, use fallback
         return !value || value === key ? fallback : value;
     };
 
@@ -74,24 +93,24 @@ const App = () =>{
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": t('Web development'),
-                        "description": t('Landing page description')
+                        "name": getTranslation('Web development'),
+                        "description": getTranslation('Landing page description')
                     }
                 },
                 {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": t('Mobile apps'),
-                        "description": t('Mobile application description')
+                        "name": getTranslation('Mobile apps'),
+                        "description": getTranslation('Mobile application description')
                     }
                 },
                 {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": t('CRM systems'),
-                        "description": t('CRM system description')
+                        "name": getTranslation('CRM systems'),
+                        "description": getTranslation('CRM system description')
                     }
                 }
             ]
@@ -208,3 +227,28 @@ const App = () =>{
 }
 
 export default App;
+
+// SSR: Determine language from query params or cookies for proper meta tag rendering
+export const getServerSideProps: GetServerSideProps<PageProps> = async (context) => {
+    const { query, req } = context;
+    
+    let detectedLanguage = 'en'; // Default
+    
+    // 1. Check query parameter (lang=ru or lang=en)
+    if (query.lang && (query.lang === 'en' || query.lang === 'ru')) {
+        detectedLanguage = query.lang as string;
+    }
+    // 2. Check cookies (for returning visitors)
+    else if (req.headers.cookie) {
+        const languageMatch = req.headers.cookie.match(/language=([^;]+)/);
+        if (languageMatch && (languageMatch[1] === 'en' || languageMatch[1] === 'ru')) {
+            detectedLanguage = languageMatch[1];
+        }
+    }
+    
+    return {
+        props: {
+            initialLanguage: detectedLanguage,
+        },
+    };
+};
