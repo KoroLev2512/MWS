@@ -8,25 +8,34 @@ function App({Component, pageProps}: AppProps) {
     const [isLanguageReady, setIsLanguageReady] = useState(false);
     
     useEffect(() => {
-        // Sync language from localStorage to i18n and cookies on client-side
+        // Sync language from localStorage/cookies to i18n on client-side
         if (typeof window !== 'undefined') {
-            const storedLanguage = localStorage.getItem('language');
-            if (storedLanguage && (storedLanguage === 'en' || storedLanguage === 'ru')) {
-                // Only change if different from current language
-                if (i18n.language !== storedLanguage) {
-                    // Change language and wait for completion
-                    i18n.changeLanguage(storedLanguage).then(() => {
-                        setIsLanguageReady(true);
-                    });
-                } else {
+            // First check localStorage
+            let detectedLanguage = localStorage.getItem('language');
+            
+            // If not in localStorage, check cookies
+            if (!detectedLanguage) {
+                const cookies = document.cookie;
+                const languageMatch = cookies.match(/language=([^;]+)/);
+                detectedLanguage = languageMatch?.[1] || 'en';
+            }
+            
+            // Validate language
+            const language = (detectedLanguage === 'en' || detectedLanguage === 'ru') ? detectedLanguage : 'en';
+            
+            // Change language if different
+            if (i18n.language !== language) {
+                i18n.changeLanguage(language).then(() => {
                     setIsLanguageReady(true);
-                }
-                // Ensure cookie is set for SSR compatibility
-                if (!document.cookie.includes('language=')) {
-                    document.cookie = `language=${storedLanguage}; path=/; max-age=${365 * 24 * 60 * 60}`;
-                }
+                });
             } else {
                 setIsLanguageReady(true);
+            }
+            
+            // Sync to both localStorage and cookies
+            localStorage.setItem('language', language);
+            if (!document.cookie.includes(`language=${language}`)) {
+                document.cookie = `language=${language}; path=/; max-age=${365 * 24 * 60 * 60}`;
             }
         } else {
             setIsLanguageReady(true);
@@ -45,48 +54,5 @@ function App({Component, pageProps}: AppProps) {
         </>
     )
 }
-
-// Get initial props to read language preference from cookies on server-side
-App.getInitialProps = async (appContext) => {
-    let initialLanguage = 'en';
-    
-    // Server-side: read from request headers
-    if (appContext.ctx.req) {
-        const cookies = appContext.ctx.req.headers.cookie || '';
-        const languageMatch = cookies.match(/language=([^;]+)/);
-        if (languageMatch && (languageMatch[1] === 'en' || languageMatch[1] === 'ru')) {
-            initialLanguage = languageMatch[1];
-        }
-    } 
-    // Client-side: read from document.cookie or localStorage
-    else if (typeof window !== 'undefined') {
-        const cookies = document.cookie;
-        const languageMatch = cookies.match(/language=([^;]+)/);
-        if (languageMatch && (languageMatch[1] === 'en' || languageMatch[1] === 'ru')) {
-            initialLanguage = languageMatch[1];
-        } else {
-            // Fallback to localStorage if cookie not found
-            try {
-                const storedLanguage = localStorage.getItem('language');
-                if (storedLanguage && (storedLanguage === 'en' || storedLanguage === 'ru')) {
-                    initialLanguage = storedLanguage;
-                    // Set cookie from localStorage for future SSR
-                    document.cookie = `language=${storedLanguage}; path=/; max-age=${365 * 24 * 60 * 60}`;
-                }
-            } catch (e) {
-                // localStorage might not be available in some contexts
-            }
-        }
-    }
-    
-    // Initialize i18n with the detected language before rendering
-    if (i18n.language !== initialLanguage) {
-        await i18n.changeLanguage(initialLanguage);
-    }
-    
-    return {
-        pageProps: {}
-    };
-};
 
 export default App;
