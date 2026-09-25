@@ -1,8 +1,14 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import '@/app/styles/globals.scss';
 import { NavigationBar } from '@/widgets/NavigationBar';
-import { CookieConsent } from '@/shared/ui/CookieConsent';
+import { CookieConsent } from '@/features/cookie-consent';
 import { LanguageSync } from '@/shared/components/LanguageSync';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0088FF',
+};
 
 export const metadata: Metadata = {
   title: 'MWS - Web Development, Mobile Apps, CRM Systems & Digital Marketing | Modern Web Solutions',
@@ -37,8 +43,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#0088FF',
   manifest: '/manifest.json',
   icons: {
     icon: [{ url: '/favicon.ico' }],

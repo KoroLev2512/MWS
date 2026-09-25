@@ -13,13 +13,11 @@
     "@a1rth/css-normalize": "^1.2.4",
     "@vercel/speed-insights": "^1.2.0",
     "classnames": "^2.5.1",
-    "html-webpack-plugin": "^5.6.4",
     "i18next": "^24.2.3",
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-http-backend": "^3.0.2",
     "immer": "^10.2.0",
     "lodash": "^4.17.21",
-    "mini-css-extract-plugin": "^2.9.4",
     "next": "16.0.10",
     "react": "^19",
     "react-dom": "^19",
@@ -34,12 +32,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/webpack-dev-server": "^4.7.2",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.1",
-    "typescript": "^5.9.3",
-    "webpack": "^5.102.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.2.2"
+    "typescript": "^5.9.3"
   }
 }

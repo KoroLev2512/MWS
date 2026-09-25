@@ -1,2 +1,1 @@
-export { CookieConsent } from './CookieConsent';
-
+export { CookieConsent } from '@/features/cookie-consent';

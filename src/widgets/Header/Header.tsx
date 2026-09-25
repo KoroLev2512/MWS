@@ -7,9 +7,8 @@ import {Navigation} from "@/shared/ui/Navigation";
 import Burger from "@/shared/ui/Burger/Burger";
 import {useAppStore} from "@/shared/lib/store/appStore";
 import Link from "next/link";
-import {LanguageToggle} from "@/shared/ui/LanguageToggle";
-import {ContactModal} from "@/shared/ui/ContactModal";
-import {SuccessModal} from "@/shared/ui/SuccessModal";
+import {LanguageToggle} from "@/features/language-toggle";
+import {ContactModal, SuccessModal} from "@/features/contact-modal";
 import {useTranslation} from "react-i18next";
 
 import styles from './styles.module.scss';

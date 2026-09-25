@@ -1,2 +1,2 @@
-export { SuccessModal } from './SuccessModal';
-
+export { SuccessModal } from '@/features/contact-modal';
+export type { SuccessModalProps } from '@/features/contact-modal';
